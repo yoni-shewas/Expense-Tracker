@@ -18,25 +18,25 @@ namespace Expense_Tracker
             this.email = email;
             this.password = password;
         }
-        public log_expense()
-        {
+        //public void log_expense()
+        //{
 
-        }
-        public set_budget()
-        {
+        //}
+        //public bool set_budget()
+        //{
 
-        }
-        public view_expense()
-        {
+        //}
+        //public string view_expense()
+        //{
 
-        }
-        public view_budget()
-        {
+        //}
+        //public string view_budget()
+        //{
 
-        }
-        public generate_reports()
-        {
+        //}
+        //public void generate_reports()
+        //{
 
-        }
+        //}
     }
 }

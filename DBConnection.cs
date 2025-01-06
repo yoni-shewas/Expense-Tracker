@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Expense_Tracker
 {
@@ -11,9 +12,30 @@ namespace Expense_Tracker
     {
         private SqlConnection conn;
 
-        public DBConnection()
+
+        public SqlConnection openConnection()
         {
-            conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\yonat\\source\\repos\\Expense Tracker\\ExpenseDB.mdf\";Integrated Security=True;Connect Timeout=30");
+            try
+            {
+                string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\yonat\\source\\repos\\Expense Tracker\\ExpenseDB.mdf\";Integrated Security=True;Connect Timeout=30";
+                SqlConnection conn = new SqlConnection(connectionString);
+                conn.Open();
+                return conn;
+            }
+            catch (Exception ex)
+            {
+                if (MessageBox.Show(ex.Message, "Database connection errro", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK) { Environment.Exit(0); }
+            }
+            return null;
+
+        }
+        public void closeConnection()
+        {
+            if (conn != null)
+            {
+                conn.Close();
+                conn = null;
+            }
         }
     }
 }

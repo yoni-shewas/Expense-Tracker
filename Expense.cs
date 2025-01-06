@@ -20,9 +20,9 @@ namespace Expense_Tracker
         public void update_expense() 
         {
         }
-        public string get_expense_detail()
-        {
+        //public string get_expense_detail()
+        //{
 
-        }
+        //}
     }
 }

@@ -73,7 +73,15 @@ namespace Expense_Tracker
                     {
                         if (reader.Read())
                         {
+                            this.Hide();
+                            string userEmail = reader["email"].ToString();
+                            string userName = reader["name"].ToString();
+                            string userPassword = reader["password"].ToString();
+                            string userId = reader["userId"].ToString();
+                            Dashboard dashboard = new Dashboard(userName, userEmail, userPassword, userId);
+                            dashboard.Show();
                             MessageBox.Show("Login Succesful"); return;
+                            
                         }
                     }
                 }
@@ -119,6 +127,8 @@ namespace Expense_Tracker
                     if (row > 0) {
 
                         MessageBox.Show("Registerd succesfully");
+                        LoginPanel.Visible = true;
+                        RegisterPanel.Visible = false;
 
                     }
                     

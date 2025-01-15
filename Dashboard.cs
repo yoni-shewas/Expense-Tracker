@@ -25,11 +25,57 @@ namespace Expense_Tracker
             name = userEmail;
             id = userId;
 
-            userNameLabel.Text = userName;
+            UserNameLabel.Text = userName;
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+
+        }
+
+      
+        private void HomeNav_Click(object sender, EventArgs e)
+        {
+            ReportPanel.Hide();
+            ProfilePanel.Hide();
+            HomePanel.Show();
+
+            HomeNav.BackColor = SystemColors.MenuHighlight;
+            ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
+            ReportNav.BackColor = SystemColors.GradientInactiveCaption;
+        }
+
+        private void ProfileNav_Click(object sender, EventArgs e)
+        {
+            ReportPanel.Hide();
+            ProfilePanel.Show();
+            HomePanel.Hide();
+
+            HomeNav.BackColor = SystemColors.GradientInactiveCaption;
+            ProfileNav.BackColor = SystemColors.MenuHighlight;
+            ReportNav.BackColor = SystemColors.GradientInactiveCaption;
+        }
+
+        private void ReportNav_Click(object sender, EventArgs e)
+        {
+            ReportPanel.Show();
+            ProfilePanel.Hide();
+            HomePanel.Hide();
+
+            HomeNav.BackColor = SystemColors.GradientInactiveCaption;
+            ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
+            ReportNav.BackColor = SystemColors.MenuHighlight;
+        }
+
+        private void LogoutLink_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            email = "";
+            password = "";
+            name = "";
+            id = "";
+            this.Hide();
+            LoginForm loginPage = new LoginForm();
+            loginPage.Show();
 
         }
     }

@@ -28,66 +28,170 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LoginPanel = new System.Windows.Forms.Panel();
-            this.userNameLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.LoginPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.HomePanel = new System.Windows.Forms.Panel();
+            this.navPanel = new System.Windows.Forms.Panel();
+            this.HomeNav = new System.Windows.Forms.Button();
+            this.ProfileNav = new System.Windows.Forms.Button();
+            this.ReportNav = new System.Windows.Forms.Button();
+            this.ReportPanel = new System.Windows.Forms.Panel();
+            this.ProfilePanel = new System.Windows.Forms.Panel();
+            this.UserPanel = new System.Windows.Forms.Panel();
+            this.UserNameLabel = new System.Windows.Forms.Label();
+            this.LogoutLink = new System.Windows.Forms.LinkLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.navPanel.SuspendLayout();
+            this.UserPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // LoginPanel
+            // HomePanel
             // 
-            this.LoginPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.LoginPanel.Controls.Add(this.pictureBox1);
-            this.LoginPanel.Controls.Add(this.userNameLabel);
-            this.LoginPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LoginPanel.Location = new System.Drawing.Point(1, 1);
-            this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(1060, 671);
-            this.LoginPanel.TabIndex = 2;
+            this.HomePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.HomePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.HomePanel.Location = new System.Drawing.Point(0, 0);
+            this.HomePanel.Name = "HomePanel";
+            this.HomePanel.Size = new System.Drawing.Size(1060, 671);
+            this.HomePanel.TabIndex = 2;
             // 
-            // userNameLabel
+            // navPanel
             // 
-            this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.userNameLabel.Location = new System.Drawing.Point(924, 24);
-            this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(101, 38);
-            this.userNameLabel.TabIndex = 5;
-            this.userNameLabel.Text = "Login";
-            this.userNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.navPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.navPanel.Controls.Add(this.HomeNav);
+            this.navPanel.Controls.Add(this.ProfileNav);
+            this.navPanel.Controls.Add(this.ReportNav);
+            this.navPanel.Location = new System.Drawing.Point(12, 12);
+            this.navPanel.Name = "navPanel";
+            this.navPanel.Size = new System.Drawing.Size(456, 36);
+            this.navPanel.TabIndex = 7;
             // 
-            // pictureBox1
+            // HomeNav
             // 
-            this.pictureBox1.Image = global::Expense_Tracker.Properties.Resources.profile_svgrepo_com;
-            this.pictureBox1.Location = new System.Drawing.Point(852, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.HomeNav.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.HomeNav.Location = new System.Drawing.Point(12, 0);
+            this.HomeNav.Name = "HomeNav";
+            this.HomeNav.Size = new System.Drawing.Size(75, 35);
+            this.HomeNav.TabIndex = 9;
+            this.HomeNav.Text = "Home";
+            this.HomeNav.UseVisualStyleBackColor = false;
+            this.HomeNav.Click += new System.EventHandler(this.HomeNav_Click);
+            // 
+            // ProfileNav
+            // 
+            this.ProfileNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ProfileNav.Location = new System.Drawing.Point(120, 0);
+            this.ProfileNav.Name = "ProfileNav";
+            this.ProfileNav.Size = new System.Drawing.Size(75, 35);
+            this.ProfileNav.TabIndex = 10;
+            this.ProfileNav.Text = "Profile";
+            this.ProfileNav.UseVisualStyleBackColor = false;
+            this.ProfileNav.Click += new System.EventHandler(this.ProfileNav_Click);
+            // 
+            // ReportNav
+            // 
+            this.ReportNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.ReportNav.Location = new System.Drawing.Point(228, 0);
+            this.ReportNav.Name = "ReportNav";
+            this.ReportNav.Size = new System.Drawing.Size(75, 35);
+            this.ReportNav.TabIndex = 11;
+            this.ReportNav.Text = "Report";
+            this.ReportNav.UseVisualStyleBackColor = false;
+            this.ReportNav.Click += new System.EventHandler(this.ReportNav_Click);
+            // 
+            // ReportPanel
+            // 
+            this.ReportPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ReportPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ReportPanel.Location = new System.Drawing.Point(0, 0);
+            this.ReportPanel.Name = "ReportPanel";
+            this.ReportPanel.Size = new System.Drawing.Size(1060, 671);
+            this.ReportPanel.TabIndex = 9;
+            // 
+            // ProfilePanel
+            // 
+            this.ProfilePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ProfilePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
+            this.ProfilePanel.Name = "ProfilePanel";
+            this.ProfilePanel.Size = new System.Drawing.Size(1060, 671);
+            this.ProfilePanel.TabIndex = 10;
+            // 
+            // UserPanel
+            // 
+            this.UserPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.UserPanel.Controls.Add(this.UserNameLabel);
+            this.UserPanel.Controls.Add(this.LogoutLink);
+            this.UserPanel.Controls.Add(this.pictureBox2);
+            this.UserPanel.Location = new System.Drawing.Point(900, 12);
+            this.UserPanel.Name = "UserPanel";
+            this.UserPanel.Size = new System.Drawing.Size(156, 60);
+            this.UserPanel.TabIndex = 12;
+            // 
+            // UserNameLabel
+            // 
+            this.UserNameLabel.AutoSize = true;
+            this.UserNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.UserNameLabel.Location = new System.Drawing.Point(48, 0);
+            this.UserNameLabel.Name = "UserNameLabel";
+            this.UserNameLabel.Size = new System.Drawing.Size(90, 32);
+            this.UserNameLabel.TabIndex = 5;
+            this.UserNameLabel.Text = "Login";
+            this.UserNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // LogoutLink
+            // 
+            this.LogoutLink.AutoSize = true;
+            this.LogoutLink.Location = new System.Drawing.Point(60, 36);
+            this.LogoutLink.Name = "LogoutLink";
+            this.LogoutLink.Size = new System.Drawing.Size(48, 16);
+            this.LogoutLink.TabIndex = 8;
+            this.LogoutLink.TabStop = true;
+            this.LogoutLink.Text = "Logout";
+            this.LogoutLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LogoutLink_LinkClicked_1);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Expense_Tracker.Properties.Resources.profile_svgrepo_com;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(48, 48);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 673);
-            this.Controls.Add(this.LoginPanel);
+            this.Controls.Add(this.UserPanel);
+            this.Controls.Add(this.navPanel);
+            this.Controls.Add(this.HomePanel);
+            this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.ReportPanel);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            this.LoginPanel.ResumeLayout(false);
-            this.LoginPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.navPanel.ResumeLayout(false);
+            this.UserPanel.ResumeLayout(false);
+            this.UserPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel LoginPanel;
-        private System.Windows.Forms.Label userNameLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel HomePanel;
+        private System.Windows.Forms.Panel navPanel;
+        private System.Windows.Forms.Button ReportNav;
+        private System.Windows.Forms.Button ProfileNav;
+        private System.Windows.Forms.Button HomeNav;
+        private System.Windows.Forms.Panel ReportPanel;
+        private System.Windows.Forms.Panel ProfilePanel;
+        private System.Windows.Forms.Panel UserPanel;
+        private System.Windows.Forms.Label UserNameLabel;
+        private System.Windows.Forms.LinkLabel LogoutLink;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

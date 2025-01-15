@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -60,8 +60,6 @@
             this.BudgetNav = new System.Windows.Forms.Button();
             this.HomeNav = new System.Windows.Forms.Button();
             this.ProfileNav = new System.Windows.Forms.Button();
-            this.ReportNav = new System.Windows.Forms.Button();
-            this.ReportPanel = new System.Windows.Forms.Panel();
             this.ProfilePanel = new System.Windows.Forms.Panel();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.UserNameLabel = new System.Windows.Forms.Label();
@@ -69,17 +67,25 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.expenseTableAdapter = new Expense_Tracker.ExpenseDBDataSetTableAdapters.ExpenseTableAdapter();
             this.ExpensePanel = new System.Windows.Forms.Panel();
-            this.BudgetPanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.filterEndDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.filterStartDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.filterMaxAmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.filterCategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.filterMinAmountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.filterButton = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.filterDropdown = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.rangeDropDown = new System.Windows.Forms.ComboBox();
+            this.BudgetPanel = new System.Windows.Forms.Panel();
             this.HomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.summaryPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -90,6 +96,8 @@
             this.UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ExpensePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterMaxAmountNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filterMinAmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,17 +162,17 @@
             // 
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea1.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend3);
             this.summaryPie.Location = new System.Drawing.Point(600, 132);
             this.summaryPie.Name = "summaryPie";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.summaryPie.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.summaryPie.Series.Add(series3);
             this.summaryPie.Size = new System.Drawing.Size(396, 252);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
@@ -346,7 +354,6 @@
             this.navPanel.Controls.Add(this.BudgetNav);
             this.navPanel.Controls.Add(this.HomeNav);
             this.navPanel.Controls.Add(this.ProfileNav);
-            this.navPanel.Controls.Add(this.ReportNav);
             this.navPanel.Location = new System.Drawing.Point(276, 12);
             this.navPanel.Name = "navPanel";
             this.navPanel.Size = new System.Drawing.Size(444, 36);
@@ -366,7 +373,7 @@
             // BudgetNav
             // 
             this.BudgetNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.BudgetNav.Location = new System.Drawing.Point(264, 0);
+            this.BudgetNav.Location = new System.Drawing.Point(240, 0);
             this.BudgetNav.Name = "BudgetNav";
             this.BudgetNav.Size = new System.Drawing.Size(75, 35);
             this.BudgetNav.TabIndex = 12;
@@ -388,33 +395,13 @@
             // ProfileNav
             // 
             this.ProfileNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ProfileNav.Location = new System.Drawing.Point(96, 0);
+            this.ProfileNav.Location = new System.Drawing.Point(132, 0);
             this.ProfileNav.Name = "ProfileNav";
             this.ProfileNav.Size = new System.Drawing.Size(75, 35);
             this.ProfileNav.TabIndex = 10;
             this.ProfileNav.Text = "Profile";
             this.ProfileNav.UseVisualStyleBackColor = false;
             this.ProfileNav.Click += new System.EventHandler(this.ProfileNav_Click);
-            // 
-            // ReportNav
-            // 
-            this.ReportNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ReportNav.Location = new System.Drawing.Point(180, 0);
-            this.ReportNav.Name = "ReportNav";
-            this.ReportNav.Size = new System.Drawing.Size(75, 35);
-            this.ReportNav.TabIndex = 11;
-            this.ReportNav.Text = "Report";
-            this.ReportNav.UseVisualStyleBackColor = false;
-            this.ReportNav.Click += new System.EventHandler(this.ReportNav_Click);
-            // 
-            // ReportPanel
-            // 
-            this.ReportPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ReportPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ReportPanel.Location = new System.Drawing.Point(0, 0);
-            this.ReportPanel.Name = "ReportPanel";
-            this.ReportPanel.Size = new System.Drawing.Size(1060, 671);
-            this.ReportPanel.TabIndex = 9;
             // 
             // ProfilePanel
             // 
@@ -476,26 +463,154 @@
             // ExpensePanel
             // 
             this.ExpensePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ExpensePanel.Controls.Add(this.label10);
-            this.ExpensePanel.Controls.Add(this.rangeDropDown);
+            this.ExpensePanel.Controls.Add(this.label14);
+            this.ExpensePanel.Controls.Add(this.filterEndDatePicker);
+            this.ExpensePanel.Controls.Add(this.filterStartDatePicker);
+            this.ExpensePanel.Controls.Add(this.filterMaxAmountNumericUpDown);
+            this.ExpensePanel.Controls.Add(this.label15);
+            this.ExpensePanel.Controls.Add(this.filterCategoryComboBox);
+            this.ExpensePanel.Controls.Add(this.filterMinAmountNumericUpDown);
+            this.ExpensePanel.Controls.Add(this.label13);
+            this.ExpensePanel.Controls.Add(this.filterButton);
+            this.ExpensePanel.Controls.Add(this.label12);
+            this.ExpensePanel.Controls.Add(this.label11);
             this.ExpensePanel.Controls.Add(this.label9);
-            this.ExpensePanel.Controls.Add(this.filterDropdown);
             this.ExpensePanel.Controls.Add(this.label6);
             this.ExpensePanel.Controls.Add(this.dataGridView2);
-            this.ExpensePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ExpensePanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ExpensePanel.Location = new System.Drawing.Point(0, 0);
             this.ExpensePanel.Name = "ExpensePanel";
             this.ExpensePanel.Size = new System.Drawing.Size(1060, 671);
             this.ExpensePanel.TabIndex = 10;
             // 
-            // BudgetPanel
+            // label14
             // 
-            this.BudgetPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.BudgetPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BudgetPanel.Location = new System.Drawing.Point(0, 0);
-            this.BudgetPanel.Name = "BudgetPanel";
-            this.BudgetPanel.Size = new System.Drawing.Size(1060, 671);
-            this.BudgetPanel.TabIndex = 11;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label14.Location = new System.Drawing.Point(24, 192);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(61, 22);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "From: ";
+            // 
+            // filterEndDatePicker
+            // 
+            this.filterEndDatePicker.Location = new System.Drawing.Point(360, 192);
+            this.filterEndDatePicker.Name = "filterEndDatePicker";
+            this.filterEndDatePicker.Size = new System.Drawing.Size(228, 22);
+            this.filterEndDatePicker.TabIndex = 31;
+            // 
+            // filterStartDatePicker
+            // 
+            this.filterStartDatePicker.Location = new System.Drawing.Point(84, 192);
+            this.filterStartDatePicker.Name = "filterStartDatePicker";
+            this.filterStartDatePicker.Size = new System.Drawing.Size(228, 22);
+            this.filterStartDatePicker.TabIndex = 30;
+            // 
+            // filterMaxAmountNumericUpDown
+            // 
+            this.filterMaxAmountNumericUpDown.Location = new System.Drawing.Point(516, 144);
+            this.filterMaxAmountNumericUpDown.Name = "filterMaxAmountNumericUpDown";
+            this.filterMaxAmountNumericUpDown.Size = new System.Drawing.Size(72, 22);
+            this.filterMaxAmountNumericUpDown.TabIndex = 26;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label15.Location = new System.Drawing.Point(324, 192);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 22);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "To: ";
+            // 
+            // filterCategoryComboBox
+            // 
+            this.filterCategoryComboBox.FormattingEnabled = true;
+            this.filterCategoryComboBox.Items.AddRange(new object[] {
+            "category",
+            "amount",
+            "date"});
+            this.filterCategoryComboBox.Location = new System.Drawing.Point(120, 144);
+            this.filterCategoryComboBox.Name = "filterCategoryComboBox";
+            this.filterCategoryComboBox.Size = new System.Drawing.Size(168, 24);
+            this.filterCategoryComboBox.TabIndex = 20;
+            // 
+            // filterMinAmountNumericUpDown
+            // 
+            this.filterMinAmountNumericUpDown.Location = new System.Drawing.Point(360, 144);
+            this.filterMinAmountNumericUpDown.Name = "filterMinAmountNumericUpDown";
+            this.filterMinAmountNumericUpDown.Size = new System.Drawing.Size(72, 22);
+            this.filterMinAmountNumericUpDown.TabIndex = 25;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label13.Location = new System.Drawing.Point(456, 144);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 22);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Max: ";
+            // 
+            // filterButton
+            // 
+            this.filterButton.BackColor = System.Drawing.Color.Turquoise;
+            this.filterButton.Location = new System.Drawing.Point(504, 240);
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Size = new System.Drawing.Size(75, 23);
+            this.filterButton.TabIndex = 24;
+            this.filterButton.Text = "Go";
+            this.filterButton.UseVisualStyleBackColor = false;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label12.Location = new System.Drawing.Point(312, 144);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 22);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Min: ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label11.Location = new System.Drawing.Point(24, 144);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 22);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Category: ";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Navy;
+            this.label9.Location = new System.Drawing.Point(48, 108);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 22);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Filter by: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(24, 60);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(233, 32);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "All Transactions";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // dataGridView2
             // 
@@ -510,11 +625,11 @@
             this.dataGridViewTextBoxColumn4});
             this.dataGridView2.DataSource = this.expenseBindingSource;
             this.dataGridView2.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView2.Location = new System.Drawing.Point(24, 144);
+            this.dataGridView2.Location = new System.Drawing.Point(36, 276);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(552, 276);
+            this.dataGridView2.Size = new System.Drawing.Size(552, 360);
             this.dataGridView2.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn1
@@ -549,63 +664,14 @@
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Width = 125;
             // 
-            // label6
+            // BudgetPanel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Navy;
-            this.label6.Location = new System.Drawing.Point(24, 60);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(233, 32);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "All Transactions";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // filterDropdown
-            // 
-            this.filterDropdown.FormattingEnabled = true;
-            this.filterDropdown.Items.AddRange(new object[] {
-            "category",
-            "amount",
-            "date"});
-            this.filterDropdown.Location = new System.Drawing.Point(108, 108);
-            this.filterDropdown.Name = "filterDropdown";
-            this.filterDropdown.Size = new System.Drawing.Size(168, 24);
-            this.filterDropdown.TabIndex = 20;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(24, 108);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 22);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Filter by: ";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(300, 108);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 22);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Range: ";
-            // 
-            // rangeDropDown
-            // 
-            this.rangeDropDown.FormattingEnabled = true;
-            this.rangeDropDown.Items.AddRange(new object[] {
-            "category",
-            "amount",
-            "date"});
-            this.rangeDropDown.Location = new System.Drawing.Point(384, 108);
-            this.rangeDropDown.Name = "rangeDropDown";
-            this.rangeDropDown.Size = new System.Drawing.Size(168, 24);
-            this.rangeDropDown.TabIndex = 22;
+            this.BudgetPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.BudgetPanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BudgetPanel.Location = new System.Drawing.Point(0, 0);
+            this.BudgetPanel.Name = "BudgetPanel";
+            this.BudgetPanel.Size = new System.Drawing.Size(1060, 671);
+            this.BudgetPanel.TabIndex = 11;
             // 
             // Dashboard
             // 
@@ -617,7 +683,6 @@
             this.Controls.Add(this.ExpensePanel);
             this.Controls.Add(this.HomePanel);
             this.Controls.Add(this.ProfilePanel);
-            this.Controls.Add(this.ReportPanel);
             this.Controls.Add(this.BudgetPanel);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
@@ -635,6 +700,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ExpensePanel.ResumeLayout(false);
             this.ExpensePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterMaxAmountNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filterMinAmountNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
@@ -644,10 +711,8 @@
 
         private System.Windows.Forms.Panel HomePanel;
         private System.Windows.Forms.Panel navPanel;
-        private System.Windows.Forms.Button ReportNav;
         private System.Windows.Forms.Button ProfileNav;
         private System.Windows.Forms.Button HomeNav;
-        private System.Windows.Forms.Panel ReportPanel;
         private System.Windows.Forms.Panel ProfilePanel;
         private System.Windows.Forms.Panel UserPanel;
         private System.Windows.Forms.Label UserNameLabel;
@@ -685,10 +750,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.ComboBox filterDropdown;
+        private System.Windows.Forms.ComboBox filterCategoryComboBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox rangeDropDown;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button filterButton;
+        private System.Windows.Forms.NumericUpDown filterMaxAmountNumericUpDown;
+        private System.Windows.Forms.NumericUpDown filterMinAmountNumericUpDown;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.DateTimePicker filterEndDatePicker;
+        private System.Windows.Forms.DateTimePicker filterStartDatePicker;
     }
 }

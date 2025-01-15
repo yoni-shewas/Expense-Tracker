@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Expense_Tracker
 {
-    internal class Expense
+    internal class Expense 
     {
         private float amount;
         private string category;
         DateTime date;
 
+        
 
         public void add_expense()
         {
@@ -21,9 +26,116 @@ namespace Expense_Tracker
         public void update_expense() 
         {
         }
-        //public string get_expense_detail()
-        //{
 
-        //}
+        internal void ExpenseTable(DataGridView dataGridView2, string selectedCategory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetExpenseData(string id, string categoryFilter = null, DateTime? startDateFilter = null, DateTime? endDateFilter = null, decimal? minAmountFilter = null, decimal? maxAmountFilter = null)
+        {
+            string query = @"
+        SELECT
+            u.name AS userName,
+            c.name AS categoryName,
+            e.amount AS Amount,
+            e.date AS Date
+        FROM 
+            dbo.Expense e
+        JOIN 
+            dbo.[User] u ON e.userId = @userId
+        JOIN 
+            dbo.Category c ON e.categoryId = c.categoryId
+        WHERE 
+            e.userId = @userId";
+
+            if (!string.IsNullOrEmpty(categoryFilter))
+            {
+                query += " AND c.name = @categoryFilter";
+            }
+
+            if (startDateFilter.HasValue && endDateFilter.HasValue)
+            {
+                query += " AND e.date BETWEEN @startDateFilter AND @endDateFilter";
+            }
+            else if (startDateFilter.HasValue)
+            {
+                query += " AND e.date >= @startDateFilter";
+            }
+            else if (endDateFilter.HasValue)
+            {
+                query += " AND e.date <= @endDateFilter";
+            }
+
+            if (minAmountFilter.HasValue && maxAmountFilter.HasValue)
+            {
+                query += " AND e.amount BETWEEN @minAmountFilter AND @maxAmountFilter";
+            }
+            else if (minAmountFilter.HasValue)
+            {
+                query += " AND e.amount >= @minAmountFilter";
+            }
+            else if (maxAmountFilter.HasValue)
+            {
+                query += " AND e.amount <= @maxAmountFilter";
+            }
+
+            query += " ORDER BY e.date DESC;";  // Ensure the query ends correctly
+
+            SqlConnection DB = new DBConnection().openConnection();
+
+            try
+            {
+                SqlCommand command = new SqlCommand(query, DB);
+                command.Parameters.AddWithValue("@userId", id);
+
+                if (!string.IsNullOrEmpty(categoryFilter))
+                {
+                    command.Parameters.AddWithValue("@categoryFilter", categoryFilter);
+                }
+
+                if (startDateFilter.HasValue)
+                {
+                    command.Parameters.AddWithValue("@startDateFilter", startDateFilter.Value);
+                }
+
+                if (endDateFilter.HasValue)
+                {
+                    command.Parameters.AddWithValue("@endDateFilter", endDateFilter.Value);
+                }
+
+                if (minAmountFilter.HasValue)
+                {
+                    command.Parameters.AddWithValue("@minAmountFilter", minAmountFilter.Value);
+                }
+
+                if (maxAmountFilter.HasValue)
+                {
+                    command.Parameters.AddWithValue("@maxAmountFilter", maxAmountFilter.Value);
+                }
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                DataTable dataTable = new DataTable();
+                int rowsAffected = dataAdapter.Fill(dataTable);
+
+                // Debugging to ensure data is returned
+                MessageBox.Show($"Rows returned: {rowsAffected}");
+
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            finally
+            {
+                if (DB.State == ConnectionState.Open)
+                    DB.Close();
+            }
+
+            return null;
+        }
+
+
     }
 }

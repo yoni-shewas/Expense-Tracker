@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,6 +16,7 @@ namespace Expense_Tracker
         private string password;
         private string name;
         private string id;
+        private string[] categories;
 
         public Dashboard(string userName, string userEmail, string userPassword, string userId)
         {
@@ -146,23 +148,22 @@ namespace Expense_Tracker
 
         private void HomeNav_Click(object sender, EventArgs e)
         {
-            ReportPanel.Hide();
+
             ProfilePanel.Hide();
             HomePanel.Show();
             BudgetPanel.Hide();
             ExpensePanel.Hide();
 
             HomeNav.BackColor = SystemColors.MenuHighlight;
-            HomeNav.ForeColor = Color.Gray;
+            //HomeNav.ForeColor = Color.Gray;
             ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
-            ReportNav.BackColor = SystemColors.GradientInactiveCaption;
+            BudgetNav.BackColor = SystemColors.GradientInactiveCaption;
             ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
            
         }
 
         private void ProfileNav_Click(object sender, EventArgs e)
         {
-            ReportPanel.Hide();
             ProfilePanel.Show();
             HomePanel.Hide();
             BudgetPanel.Hide();
@@ -171,28 +172,12 @@ namespace Expense_Tracker
             HomeNav.BackColor = SystemColors.GradientInactiveCaption;
 
             ProfileNav.BackColor = SystemColors.MenuHighlight;
-            ProfileNav.ForeColor = Color.Gray;
-            ReportNav.BackColor = SystemColors.GradientInactiveCaption;
-            ExpensePanel.BackColor = SystemColors.GradientInactiveCaption;
-            BudgetPanel.BackColor = SystemColors.GradientInactiveCaption;
+            //ProfileNav.ForeColor = Color.Gray;
+            
+            ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
+            BudgetNav.BackColor = SystemColors.GradientInactiveCaption;
         }
 
-        private void ReportNav_Click(object sender, EventArgs e)
-        {
-            ReportPanel.Show();
-            ProfilePanel.Hide();
-            HomePanel.Hide();
-            BudgetPanel.Hide();
-            ExpensePanel.Hide();
-
-            HomeNav.BackColor = SystemColors.GradientInactiveCaption;
-        
-            ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
-            ReportNav.BackColor = SystemColors.MenuHighlight;
-            ReportNav.ForeColor = Color.Gray;
-            ExpensePanel.BackColor = SystemColors.GradientInactiveCaption;
-            BudgetPanel.BackColor = SystemColors.GradientInactiveCaption;
-        }
 
         private void LogoutLink_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -211,16 +196,15 @@ namespace Expense_Tracker
 
         private void BudgetNav_Click(object sender, EventArgs e)
         {
-            ReportPanel.Hide();
             ProfilePanel.Hide();
             HomePanel.Hide();
             BudgetPanel.Show();
             ExpensePanel.Hide();
 
             BudgetNav.BackColor =  SystemColors.MenuHighlight;
-            BudgetNav.ForeColor = Color.Gray;
+          
             ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
-            ReportNav.BackColor = SystemColors.GradientInactiveCaption;
+          
             ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
             HomeNav.BackColor = SystemColors.GradientInactiveCaption;
 
@@ -228,72 +212,107 @@ namespace Expense_Tracker
 
         private void ExpenseNav_Click(object sender, EventArgs e)
         {
-            ReportPanel.Hide();
             ProfilePanel.Hide();
             HomePanel.Hide();
             BudgetPanel.Hide();
             ExpensePanel.Show();
 
             ExpenseNav.BackColor = SystemColors.MenuHighlight;
-            ExpenseNav.ForeColor = Color.Gray;
+            //ExpenseNav.ForeColor = Color.Gray;
             ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
-            ReportNav.BackColor = SystemColors.GradientInactiveCaption;
+     
             HomeNav.BackColor = SystemColors.GradientInactiveCaption;
             BudgetNav.BackColor = SystemColors.GradientInactiveCaption;
 
-            ExpenseTable();
+            Expense expense = new Expense();
 
-            //filterDropdown
-            //rangeDropdown
+            Expense exp = new Expense();
 
+            DataTable expenseData = exp.GetExpenseData(id);
+
+       
+            dataGridView2.DataSource = expenseData;
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                row.DefaultCellStyle.BackColor = SystemColors.GradientInactiveCaption;
+                row.DefaultCellStyle.ForeColor = Color.Black;
+            }
+
+
+            filterCategoryComboBox.Items.Clear();
+            categories = LoadCategoryFilter();
+            filterCategoryComboBox.Items.AddRange(categories);
+            
+            filterStartDatePicker.ShowCheckBox = true;
+            filterEndDatePicker.ShowCheckBox = true;
+  
 
 
         }
 
-        private void ExpenseTable()
-        {
-            string query = @"
-                    SELECT *
-                        u.name AS userName,
-                        c.name AS categoryName,
-                        e.amount AS Amount,
-                        e.date AS Date
-                    FROM 
-                        dbo.Expense e
-                    JOIN 
-                        dbo.[User] u ON e.userId = @userId
-                    JOIN 
-                        dbo.Category c ON e.categoryId = c.categoryId
-                    WHERE 
-                        e.userId = @userId
-                        AND u.userId IS NOT NULL 
-                        AND c.categoryId IS NOT NULL
-                    ORDER BY 
-                        e.date DESC;";
 
+
+
+        private void filterButton_Click(object sender, EventArgs e)
+        {
+            categories = LoadCategoryFilter();
+
+            string selectedCategory = filterCategoryComboBox.SelectedItem?.ToString();
+            DateTime? selectedStartDate = (filterStartDatePicker.Value.Date == DateTime.Now.Date)
+                    ? null
+                    : (DateTime?)filterStartDatePicker.Value;
+
+            DateTime? selectedEndDate = (filterEndDatePicker.Value.Date == DateTime.Now.Date)
+                ? null
+                : (DateTime?)filterEndDatePicker.Value;
+
+            decimal? selectedMinAmount = filterMinAmountNumericUpDown.Value > 0 ? (decimal?)filterMinAmountNumericUpDown.Value : null;
+            decimal? selectedMaxAmount = filterMaxAmountNumericUpDown.Value > 0 ? (decimal?)filterMaxAmountNumericUpDown.Value : null;
+
+
+          
+
+            Expense exp = new Expense();
+
+            DataTable expenseData = exp.GetExpenseData(id, selectedCategory, selectedStartDate, selectedEndDate, selectedMinAmount, selectedMaxAmount);
+
+
+        
+            dataGridView2.DataSource = expenseData;
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                row.DefaultCellStyle.BackColor = SystemColors.GradientInactiveCaption;
+                row.DefaultCellStyle.ForeColor = Color.Black;
+            }
+        }
+
+        private string[] LoadCategoryFilter()
+        {
+
+            List<string> categoryList = new List<string>();
+
+           
+            string categoryQuery = "SELECT name FROM dbo.Category";
             SqlConnection DB = new DBConnection().openConnection();
 
             try
             {
-                SqlCommand command = new SqlCommand(query, DB);
-                command.Parameters.AddWithValue("@userId", id);
+                SqlCommand command = new SqlCommand(categoryQuery, DB);
+                SqlDataReader reader = command.ExecuteReader();
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-
-                dataGridView2.DataSource = dataTable;
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                while (reader.Read())
                 {
-                    row.DefaultCellStyle.BackColor = SystemColors.GradientInactiveCaption;
-                    row.DefaultCellStyle.ForeColor = Color.Black;
+                    categoryList.Add(reader["name"].ToString());
                 }
 
+                return categoryList.ToArray();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
+                return new string[0]; 
             }
             finally
             {
@@ -301,5 +320,7 @@ namespace Expense_Tracker
                     DB.Close();
             }
         }
-        }
-}
+    }
+    }
+    
+

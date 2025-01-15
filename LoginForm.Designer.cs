@@ -274,6 +274,7 @@
             this.passwordLoginBox.PasswordChar = '*';
             this.passwordLoginBox.Size = new System.Drawing.Size(367, 38);
             this.passwordLoginBox.TabIndex = 2;
+            this.passwordLoginBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.passwordLoginBox_PreviewKeyDown);
             // 
             // emailLoginBox
             // 

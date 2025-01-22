@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -50,14 +50,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TotalExpense = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.reaminingBudget = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TotalIncome = new System.Windows.Forms.TextBox();
             this.navPanel = new System.Windows.Forms.Panel();
             this.ExpenseNav = new System.Windows.Forms.Button();
-            this.BudgetNav = new System.Windows.Forms.Button();
             this.HomeNav = new System.Windows.Forms.Button();
             this.ProfileNav = new System.Windows.Forms.Button();
             this.ProfilePanel = new System.Windows.Forms.Panel();
@@ -92,6 +91,12 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BudgetPanel = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.AddBudget = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.BudgetBox = new System.Windows.Forms.TextBox();
+            this.EditBudget = new System.Windows.Forms.Button();
+            this.DeleteBudget = new System.Windows.Forms.Button();
             this.HomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.summaryPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -120,11 +125,11 @@
             this.HomePanel.Controls.Add(this.label5);
             this.HomePanel.Controls.Add(this.label4);
             this.HomePanel.Controls.Add(this.label3);
-            this.HomePanel.Controls.Add(this.textBox3);
+            this.HomePanel.Controls.Add(this.TotalExpense);
             this.HomePanel.Controls.Add(this.label2);
-            this.HomePanel.Controls.Add(this.textBox2);
+            this.HomePanel.Controls.Add(this.reaminingBudget);
             this.HomePanel.Controls.Add(this.label1);
-            this.HomePanel.Controls.Add(this.textBox1);
+            this.HomePanel.Controls.Add(this.TotalIncome);
             this.HomePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.HomePanel.Location = new System.Drawing.Point(0, 0);
             this.HomePanel.Name = "HomePanel";
@@ -168,17 +173,17 @@
             // 
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea1.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend2);
             this.summaryPie.Location = new System.Drawing.Point(600, 132);
             this.summaryPie.Name = "summaryPie";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.summaryPie.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.summaryPie.Series.Add(series2);
             this.summaryPie.Size = new System.Drawing.Size(396, 252);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
@@ -310,12 +315,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Total Expense:";
             // 
-            // textBox3
+            // TotalExpense
             // 
-            this.textBox3.Location = new System.Drawing.Point(276, 204);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(156, 22);
-            this.textBox3.TabIndex = 4;
+            this.TotalExpense.Location = new System.Drawing.Point(276, 204);
+            this.TotalExpense.Name = "TotalExpense";
+            this.TotalExpense.Size = new System.Drawing.Size(156, 22);
+            this.TotalExpense.TabIndex = 4;
             // 
             // label2
             // 
@@ -328,12 +333,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Reamining Budget: ";
             // 
-            // textBox2
+            // reaminingBudget
             // 
-            this.textBox2.Location = new System.Drawing.Point(276, 240);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(156, 22);
-            this.textBox2.TabIndex = 2;
+            this.reaminingBudget.Location = new System.Drawing.Point(276, 240);
+            this.reaminingBudget.Name = "reaminingBudget";
+            this.reaminingBudget.Size = new System.Drawing.Size(156, 22);
+            this.reaminingBudget.TabIndex = 2;
             // 
             // label1
             // 
@@ -346,18 +351,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Total Income: ";
             // 
-            // textBox1
+            // TotalIncome
             // 
-            this.textBox1.Location = new System.Drawing.Point(276, 168);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(156, 22);
-            this.textBox1.TabIndex = 0;
+            this.TotalIncome.Location = new System.Drawing.Point(276, 168);
+            this.TotalIncome.Name = "TotalIncome";
+            this.TotalIncome.Size = new System.Drawing.Size(156, 22);
+            this.TotalIncome.TabIndex = 0;
             // 
             // navPanel
             // 
             this.navPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.navPanel.Controls.Add(this.ExpenseNav);
-            this.navPanel.Controls.Add(this.BudgetNav);
             this.navPanel.Controls.Add(this.HomeNav);
             this.navPanel.Controls.Add(this.ProfileNav);
             this.navPanel.Location = new System.Drawing.Point(276, 12);
@@ -376,17 +380,6 @@
             this.ExpenseNav.UseVisualStyleBackColor = false;
             this.ExpenseNav.Click += new System.EventHandler(this.ExpenseNav_Click);
             // 
-            // BudgetNav
-            // 
-            this.BudgetNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.BudgetNav.Location = new System.Drawing.Point(240, 0);
-            this.BudgetNav.Name = "BudgetNav";
-            this.BudgetNav.Size = new System.Drawing.Size(75, 35);
-            this.BudgetNav.TabIndex = 12;
-            this.BudgetNav.Text = "Budget";
-            this.BudgetNav.UseVisualStyleBackColor = false;
-            this.BudgetNav.Click += new System.EventHandler(this.BudgetNav_Click);
-            // 
             // HomeNav
             // 
             this.HomeNav.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -401,7 +394,7 @@
             // ProfileNav
             // 
             this.ProfileNav.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ProfileNav.Location = new System.Drawing.Point(132, 0);
+            this.ProfileNav.Location = new System.Drawing.Point(180, 0);
             this.ProfileNav.Name = "ProfileNav";
             this.ProfileNav.Size = new System.Drawing.Size(75, 35);
             this.ProfileNav.TabIndex = 10;
@@ -469,6 +462,12 @@
             // ExpensePanel
             // 
             this.ExpensePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ExpensePanel.Controls.Add(this.DeleteBudget);
+            this.ExpensePanel.Controls.Add(this.EditBudget);
+            this.ExpensePanel.Controls.Add(this.BudgetBox);
+            this.ExpensePanel.Controls.Add(this.label18);
+            this.ExpensePanel.Controls.Add(this.AddBudget);
+            this.ExpensePanel.Controls.Add(this.label20);
             this.ExpensePanel.Controls.Add(this.label17);
             this.ExpensePanel.Controls.Add(this.label16);
             this.ExpensePanel.Controls.Add(this.AddExpenseBtn);
@@ -500,7 +499,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(684, 336);
+            this.label17.Location = new System.Drawing.Point(684, 456);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 22);
             this.label17.TabIndex = 38;
@@ -511,7 +510,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label16.Location = new System.Drawing.Point(684, 264);
+            this.label16.Location = new System.Drawing.Point(684, 384);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(81, 22);
             this.label16.TabIndex = 37;
@@ -520,9 +519,9 @@
             // AddExpenseBtn
             // 
             this.AddExpenseBtn.BackColor = System.Drawing.Color.Turquoise;
-            this.AddExpenseBtn.Location = new System.Drawing.Point(792, 408);
+            this.AddExpenseBtn.Location = new System.Drawing.Point(792, 528);
             this.AddExpenseBtn.Name = "AddExpenseBtn";
-            this.AddExpenseBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddExpenseBtn.Size = new System.Drawing.Size(75, 24);
             this.AddExpenseBtn.TabIndex = 25;
             this.AddExpenseBtn.Text = "Add";
             this.AddExpenseBtn.UseVisualStyleBackColor = false;
@@ -533,7 +532,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Navy;
-            this.label10.Location = new System.Drawing.Point(720, 216);
+            this.label10.Location = new System.Drawing.Point(720, 336);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(202, 32);
             this.label10.TabIndex = 36;
@@ -543,14 +542,14 @@
             // categoryComboBox
             // 
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(684, 360);
+            this.categoryComboBox.Location = new System.Drawing.Point(684, 480);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(288, 24);
             this.categoryComboBox.TabIndex = 35;
             // 
             // expenseAmountBox
             // 
-            this.expenseAmountBox.Location = new System.Drawing.Point(684, 288);
+            this.expenseAmountBox.Location = new System.Drawing.Point(684, 408);
             this.expenseAmountBox.Name = "expenseAmountBox";
             this.expenseAmountBox.Size = new System.Drawing.Size(288, 22);
             this.expenseAmountBox.TabIndex = 34;
@@ -745,6 +744,73 @@
             this.BudgetPanel.Size = new System.Drawing.Size(1060, 671);
             this.BudgetPanel.TabIndex = 11;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label18.Location = new System.Drawing.Point(684, 204);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(134, 22);
+            this.label18.TabIndex = 44;
+            this.label18.Text = "Monthly Budget";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // AddBudget
+            // 
+            this.AddBudget.BackColor = System.Drawing.Color.Turquoise;
+            this.AddBudget.Location = new System.Drawing.Point(840, 264);
+            this.AddBudget.Name = "AddBudget";
+            this.AddBudget.Size = new System.Drawing.Size(75, 23);
+            this.AddBudget.TabIndex = 39;
+            this.AddBudget.Text = "Add";
+            this.AddBudget.UseVisualStyleBackColor = false;
+            this.AddBudget.Click += new System.EventHandler(this.Add_budget_click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Navy;
+            this.label20.Location = new System.Drawing.Point(708, 144);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(181, 32);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "Add Budget ";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // BudgetBox
+            // 
+            this.BudgetBox.Location = new System.Drawing.Point(684, 228);
+            this.BudgetBox.Name = "BudgetBox";
+            this.BudgetBox.Size = new System.Drawing.Size(288, 22);
+            this.BudgetBox.TabIndex = 45;
+            // 
+            // EditBudget
+            // 
+            this.EditBudget.BackColor = System.Drawing.Color.Turquoise;
+            this.EditBudget.Location = new System.Drawing.Point(732, 264);
+            this.EditBudget.Name = "EditBudget";
+            this.EditBudget.Size = new System.Drawing.Size(75, 23);
+            this.EditBudget.TabIndex = 46;
+            this.EditBudget.Text = "Edit";
+            this.EditBudget.UseVisualStyleBackColor = false;
+            this.EditBudget.Visible = false;
+            this.EditBudget.Click += new System.EventHandler(this.EditBudget_Click);
+            // 
+            // DeleteBudget
+            // 
+            this.DeleteBudget.BackColor = System.Drawing.Color.DeepPink;
+            this.DeleteBudget.Location = new System.Drawing.Point(792, 300);
+            this.DeleteBudget.Name = "DeleteBudget";
+            this.DeleteBudget.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBudget.TabIndex = 47;
+            this.DeleteBudget.Text = "Delete";
+            this.DeleteBudget.UseVisualStyleBackColor = false;
+            this.DeleteBudget.Visible = false;
+            this.DeleteBudget.Click += new System.EventHandler(this.DeleteBudget_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -752,8 +818,8 @@
             this.ClientSize = new System.Drawing.Size(1062, 673);
             this.Controls.Add(this.UserPanel);
             this.Controls.Add(this.navPanel);
-            this.Controls.Add(this.ExpensePanel);
             this.Controls.Add(this.HomePanel);
+            this.Controls.Add(this.ExpensePanel);
             this.Controls.Add(this.ProfilePanel);
             this.Controls.Add(this.BudgetPanel);
             this.Name = "Dashboard";
@@ -792,11 +858,11 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TotalExpense;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox reaminingBudget;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TotalIncome;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
@@ -810,7 +876,6 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button ExpenseNav;
-        private System.Windows.Forms.Button BudgetNav;
         private System.Windows.Forms.Panel ExpensePanel;
         private System.Windows.Forms.Panel BudgetPanel;
         private System.Windows.Forms.DataGridViewTextBoxColumn userName;
@@ -841,5 +906,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.TextBox expenseAmountBox;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button AddBudget;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox BudgetBox;
+        private System.Windows.Forms.Button EditBudget;
+        private System.Windows.Forms.Button DeleteBudget;
     }
 }

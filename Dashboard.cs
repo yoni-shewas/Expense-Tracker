@@ -34,6 +34,8 @@ namespace Expense_Tracker
         {
             this.TableLoad();
             this.LoadPieChart();
+            reaminingBudget.Text = new Budget().GetRemainingBudgetFromExpenses(id).ToString() + " / " + new Budget().GetMostRecentBudget(id);
+            TotalExpense.Text = new Expense().GetTotalExpense(id).ToString();
         }
 
         private void TableLoad()
@@ -158,7 +160,7 @@ namespace Expense_Tracker
             HomeNav.BackColor = SystemColors.MenuHighlight;
             //HomeNav.ForeColor = Color.Gray;
             ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
-            BudgetNav.BackColor = SystemColors.GradientInactiveCaption;
+       
             ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
            
         }
@@ -176,7 +178,7 @@ namespace Expense_Tracker
             //ProfileNav.ForeColor = Color.Gray;
             
             ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
-            BudgetNav.BackColor = SystemColors.GradientInactiveCaption;
+    
         }
 
 
@@ -202,7 +204,6 @@ namespace Expense_Tracker
             BudgetPanel.Show();
             ExpensePanel.Hide();
 
-            BudgetNav.BackColor =  SystemColors.MenuHighlight;
           
             ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
           
@@ -223,7 +224,7 @@ namespace Expense_Tracker
             ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
      
             HomeNav.BackColor = SystemColors.GradientInactiveCaption;
-            BudgetNav.BackColor = SystemColors.GradientInactiveCaption;
+
 
             Expense expense = new Expense();
 
@@ -250,6 +251,14 @@ namespace Expense_Tracker
 
             filterStartDatePicker.ShowCheckBox = true;
             filterEndDatePicker.ShowCheckBox = true;
+
+            string budget = new Budget().GetMostRecentBudget(id);
+
+            if (budget != null) { 
+                BudgetBox.Text = budget;
+                EditBudget.Visible = true;
+                DeleteBudget.Visible = true;
+            }
 
         }
 
@@ -342,6 +351,63 @@ namespace Expense_Tracker
             {
                 Expense addExpense = new Expense();
                 addExpense.add_expense(id,expense, categoryID);
+            }
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label18_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Add_budget_click(object sender, EventArgs e)
+        {
+            string BudgetAmount = BudgetBox.Text;
+            bool isAdded = new Budget().AddBudget(id, BudgetAmount);
+
+            if(isAdded)
+            {
+                MessageBox.Show("Budget added successfully");
+            }
+        }
+
+        private void EditBudget_Click(object sender, EventArgs e)
+        {
+            string BudgetAmount = BudgetBox.Text;
+            bool isAdded = new Budget().EditBudget(id, BudgetAmount);
+
+            if (isAdded)
+            {
+                MessageBox.Show("Budget edited successfully");
+            }
+        }
+
+        private void DeleteBudget_Click(object sender, EventArgs e)
+        {
+            bool isDeleted = new Budget().DeleteBudget(id);
+
+            if (isDeleted)
+            {
+                MessageBox.Show("Budget Deleted successfully");
             }
         }
     }

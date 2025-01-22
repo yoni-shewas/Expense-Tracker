@@ -171,6 +171,40 @@ namespace Expense_Tracker
             return null;
         }
 
+        public double GetTotalExpense(string id)
+        {
+            string query = @"
+                            SELECT
+                                SUM(amount) AS totalExpenses
+                            FROM 
+                                dbo.Expense
+                            WHERE 
+                                userId = @userId";
+            SqlConnection DB = new DBConnection().openConnection();
+            try
+            {
+                SqlCommand command = new SqlCommand(query, DB);
+                command.Parameters.AddWithValue("@userId", id);
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    return Convert.ToDouble(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            finally
+            {
+                if (DB.State == ConnectionState.Open)
+                    DB.Close();
+            }
+            return 0;
+        }
+
 
     }
+
+
 }

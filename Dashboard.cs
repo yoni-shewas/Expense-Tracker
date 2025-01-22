@@ -17,6 +17,7 @@ namespace Expense_Tracker
         private string name;
         private string id;
         private string[] categories;
+        private Dictionary<string, string> categoryId;
 
         public Dashboard(string userName, string userEmail, string userPassword, string userId)
         {
@@ -239,15 +240,16 @@ namespace Expense_Tracker
                 row.DefaultCellStyle.ForeColor = Color.Black;
             }
 
+            (categories, categoryId) = LoadCategoryFilter();
 
             filterCategoryComboBox.Items.Clear();
-            categories = LoadCategoryFilter();
             filterCategoryComboBox.Items.AddRange(categories);
-            
+
+            categoryComboBox.Items.Clear();
+            categoryComboBox.Items.AddRange(categories);
+
             filterStartDatePicker.ShowCheckBox = true;
             filterEndDatePicker.ShowCheckBox = true;
-  
-
 
         }
 
@@ -255,8 +257,10 @@ namespace Expense_Tracker
 
 
         private void filterButton_Click(object sender, EventArgs e)
+
         {
-            categories = LoadCategoryFilter();
+            
+            (categories, categoryId) = LoadCategoryFilter();
 
             string selectedCategory = filterCategoryComboBox.SelectedItem?.ToString();
             DateTime? selectedStartDate = (filterStartDatePicker.Value.Date == DateTime.Now.Date)
@@ -288,13 +292,12 @@ namespace Expense_Tracker
             }
         }
 
-        private string[] LoadCategoryFilter()
+        private (string[], Dictionary<string, string>) LoadCategoryFilter()
         {
-
             List<string> categoryList = new List<string>();
+            Dictionary<string, string> categoryDict = new Dictionary<string, string>();
 
-           
-            string categoryQuery = "SELECT name FROM dbo.Category";
+            string categoryQuery = "SELECT categoryId, name FROM dbo.Category";
             SqlConnection DB = new DBConnection().openConnection();
 
             try
@@ -304,20 +307,41 @@ namespace Expense_Tracker
 
                 while (reader.Read())
                 {
-                    categoryList.Add(reader["name"].ToString());
+                    string name = reader["name"].ToString();
+                    categoryList.Add(name);
+                    categoryDict[name] = reader["categoryId"].ToString();
                 }
 
-                return categoryList.ToArray();
+                return (categoryList.ToArray(), categoryDict);
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
-                return new string[0]; 
+                return (new string[0], new Dictionary<string, string>());
             }
             finally
             {
                 if (DB.State == ConnectionState.Open)
                     DB.Close();
+            }
+        }
+
+
+        private void AddExpenseBtn_Click(object sender, EventArgs e)
+        {
+            string expense = expenseAmountBox.Text;
+            string category = categoryComboBox.Text;
+            string categoryID = categoryId[category];
+
+            if (string.IsNullOrEmpty(expense) || string.IsNullOrEmpty(category)) 
+            {
+                MessageBox.Show("Input in all the feilds");
+                return;
+            }
+            else
+            {
+                Expense addExpense = new Expense();
+                addExpense.add_expense(id,expense, categoryID);
             }
         }
     }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -67,6 +67,12 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.expenseTableAdapter = new Expense_Tracker.ExpenseDBDataSetTableAdapters.ExpenseTableAdapter();
             this.ExpensePanel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.AddExpenseBtn = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.expenseAmountBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.filterEndDatePicker = new System.Windows.Forms.DateTimePicker();
             this.filterStartDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -162,17 +168,17 @@
             // 
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea3.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend1);
             this.summaryPie.Location = new System.Drawing.Point(600, 132);
             this.summaryPie.Name = "summaryPie";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.summaryPie.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.summaryPie.Series.Add(series1);
             this.summaryPie.Size = new System.Drawing.Size(396, 252);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
@@ -463,6 +469,12 @@
             // ExpensePanel
             // 
             this.ExpensePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ExpensePanel.Controls.Add(this.label17);
+            this.ExpensePanel.Controls.Add(this.label16);
+            this.ExpensePanel.Controls.Add(this.AddExpenseBtn);
+            this.ExpensePanel.Controls.Add(this.label10);
+            this.ExpensePanel.Controls.Add(this.categoryComboBox);
+            this.ExpensePanel.Controls.Add(this.expenseAmountBox);
             this.ExpensePanel.Controls.Add(this.label14);
             this.ExpensePanel.Controls.Add(this.filterEndDatePicker);
             this.ExpensePanel.Controls.Add(this.filterStartDatePicker);
@@ -482,6 +494,66 @@
             this.ExpensePanel.Name = "ExpensePanel";
             this.ExpensePanel.Size = new System.Drawing.Size(1060, 671);
             this.ExpensePanel.TabIndex = 10;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label17.Location = new System.Drawing.Point(684, 336);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(83, 22);
+            this.label17.TabIndex = 38;
+            this.label17.Text = "Cateory: ";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label16.Location = new System.Drawing.Point(684, 264);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(81, 22);
+            this.label16.TabIndex = 37;
+            this.label16.Text = "Amount: ";
+            // 
+            // AddExpenseBtn
+            // 
+            this.AddExpenseBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.AddExpenseBtn.Location = new System.Drawing.Point(792, 408);
+            this.AddExpenseBtn.Name = "AddExpenseBtn";
+            this.AddExpenseBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddExpenseBtn.TabIndex = 25;
+            this.AddExpenseBtn.Text = "Add";
+            this.AddExpenseBtn.UseVisualStyleBackColor = false;
+            this.AddExpenseBtn.Click += new System.EventHandler(this.AddExpenseBtn_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Navy;
+            this.label10.Location = new System.Drawing.Point(720, 216);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(202, 32);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Add Expense ";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(684, 360);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(288, 24);
+            this.categoryComboBox.TabIndex = 35;
+            // 
+            // expenseAmountBox
+            // 
+            this.expenseAmountBox.Location = new System.Drawing.Point(684, 288);
+            this.expenseAmountBox.Name = "expenseAmountBox";
+            this.expenseAmountBox.Size = new System.Drawing.Size(288, 22);
+            this.expenseAmountBox.TabIndex = 34;
             // 
             // label14
             // 
@@ -594,7 +666,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Navy;
-            this.label9.Location = new System.Drawing.Point(48, 108);
+            this.label9.Location = new System.Drawing.Point(24, 108);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 22);
             this.label9.TabIndex = 21;
@@ -763,5 +835,11 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker filterEndDatePicker;
         private System.Windows.Forms.DateTimePicker filterStartDatePicker;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button AddExpenseBtn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox categoryComboBox;
+        private System.Windows.Forms.TextBox expenseAmountBox;
     }
 }

@@ -71,31 +71,14 @@ namespace Expense_Tracker
             }
             else
             {
-                DBConnection DB = new DBConnection();
-                SqlConnection conn = DB.openConnection();
+               User user = new User(name, email, password, userId);
+               bool isRegistered = user.register();
 
-                try
+                if (isRegistered)
                 {
-                    string query = "INSERT INTO [User] (userId,name,email,password) VALUES (@userId,@name,@email,@password)";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@userId", userId);
-                    cmd.Parameters.AddWithValue("@name", name);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    int row = cmd.ExecuteNonQuery();
-
-                    if (row > 0) {
-
-                        MessageBox.Show("Registerd succesfully");
-                        LoginPanel.Visible = true;
-                        RegisterPanel.Visible = false;
-
-                    }
-                    
-                }
-                catch (Exception ex)
-                {
-                    if (MessageBox.Show(ex.Message, "Database connection errro", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK) { Environment.Exit(0); }
+                    LoginPanel.Visible = true;
+                    RegisterPanel.Visible = false;
+                    MessageBox.Show("Registerd succesfully");
                 }
             }
         }
@@ -110,49 +93,34 @@ namespace Expense_Tracker
 
         private void Login()
         {
-
             string email = emailLoginBox.Text;
             string password = passwordLoginBox.Text;
 
-            if (email == null || password == null)
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("PLease input in the feilds");
+                MessageBox.Show("Please input all fields.");
+                return;
+            }
+
+            User user = new User(email, password);
+
+            (bool isLogged, string userName, string userEmail, string userPassword, string userId) = user.Login();
+
+            if (isLogged)
+            {
+                Console.WriteLine($"Login successful!\nName: {userName}\nEmail: {userEmail}\nUser ID: {userId}");
+
+                this.Hide();
+                Dashboard dashboard = new Dashboard(userName, userEmail, userPassword, userId);
+                dashboard.Show();
+                MessageBox.Show("Login Successful");
             }
             else
             {
-                SqlConnection DB = new DBConnection().openConnection();
-                SqlDataReader reader = null;
-
-                try
-                {
-                    string query = "select * from [User] where email = @email and password = @password";
-                    SqlCommand cmd = new SqlCommand(query, DB);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    cmd.Parameters.AddWithValue("@password", password);
-                    reader = cmd.ExecuteReader();
-
-                    if (reader != null)
-                    {
-                        if (reader.Read())
-                        {
-                            this.Hide();
-                            string userEmail = reader["email"].ToString();
-                            string userName = reader["name"].ToString();
-                            string userPassword = reader["password"].ToString();
-                            string userId = reader["userId"].ToString();
-                            Dashboard dashboard = new Dashboard(userName, userEmail, userPassword, userId);
-                            dashboard.Show();
-                            MessageBox.Show("Login Succesful"); return;
-
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (MessageBox.Show(ex.Message, "Database connection errro", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK) { Environment.Exit(0); }
-                }
+                Console.WriteLine("Login failed. Please check your credentials.");
+                MessageBox.Show("Login failed. Please check your credentials.");
             }
-
         }
+
     }
 }

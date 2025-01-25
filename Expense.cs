@@ -41,10 +41,15 @@ namespace Expense_Tracker
                 command.Parameters.AddWithValue("@date", DateTime.Now);
 
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-          
-       
-                MessageBox.Show($" Expense added!");
+                int row = command.ExecuteNonQuery();
+
+                if (row > 0)
+                {
+                    MessageBox.Show($" Expense added!");
+                }
+
+
+                
 
             }
             catch (Exception ex)
@@ -56,7 +61,7 @@ namespace Expense_Tracker
                 if (DB.State == ConnectionState.Open)
                     DB.Close();
             }
-
+    
 
         }
         public void update_expense() 

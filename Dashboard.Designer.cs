@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -60,12 +60,43 @@
             this.HomeNav = new System.Windows.Forms.Button();
             this.ProfileNav = new System.Windows.Forms.Button();
             this.ProfilePanel = new System.Windows.Forms.Panel();
+            this.deleteIncomeBtn = new System.Windows.Forms.Button();
+            this.editIncomeBtn = new System.Windows.Forms.Button();
+            this.IncomeTextBox = new System.Windows.Forms.TextBox();
+            this.addIncomeBtn = new System.Windows.Forms.Button();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.descriptionBox = new System.Windows.Forms.RichTextBox();
+            this.DeleteCategoryBtn = new System.Windows.Forms.Button();
+            this.UpdatePasswordBtn = new System.Windows.Forms.Button();
+            this.AddCategoryBtn = new System.Windows.Forms.Button();
+            this.addCategoryBox = new System.Windows.Forms.TextBox();
+            this.DeleteCategory = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.updateProfileBtn = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.UpdatePasswordConfirmBox = new System.Windows.Forms.TextBox();
+            this.UpdatePasswordBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmailBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.UpadteNameBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.UserNameLabel = new System.Windows.Forms.Label();
             this.LogoutLink = new System.Windows.Forms.LinkLabel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.expenseTableAdapter = new Expense_Tracker.ExpenseDBDataSetTableAdapters.ExpenseTableAdapter();
             this.ExpensePanel = new System.Windows.Forms.Panel();
+            this.EditBudget = new System.Windows.Forms.Button();
+            this.BudgetBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.AddBudget = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.AddExpenseBtn = new System.Windows.Forms.Button();
@@ -91,12 +122,6 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BudgetPanel = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.AddBudget = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.BudgetBox = new System.Windows.Forms.TextBox();
-            this.EditBudget = new System.Windows.Forms.Button();
-            this.DeleteBudget = new System.Windows.Forms.Button();
             this.HomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.summaryPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -104,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.expenseDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expenseDBDataSet)).BeginInit();
             this.navPanel.SuspendLayout();
+            this.ProfilePanel.SuspendLayout();
             this.UserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ExpensePanel.SuspendLayout();
@@ -173,17 +199,17 @@
             // 
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea2.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend6);
             this.summaryPie.Location = new System.Drawing.Point(600, 132);
             this.summaryPie.Name = "summaryPie";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.summaryPie.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.summaryPie.Series.Add(series6);
             this.summaryPie.Size = new System.Drawing.Size(396, 252);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
@@ -405,11 +431,301 @@
             // ProfilePanel
             // 
             this.ProfilePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ProfilePanel.Controls.Add(this.deleteIncomeBtn);
+            this.ProfilePanel.Controls.Add(this.editIncomeBtn);
+            this.ProfilePanel.Controls.Add(this.IncomeTextBox);
+            this.ProfilePanel.Controls.Add(this.addIncomeBtn);
+            this.ProfilePanel.Controls.Add(this.label31);
+            this.ProfilePanel.Controls.Add(this.label30);
+            this.ProfilePanel.Controls.Add(this.label29);
+            this.ProfilePanel.Controls.Add(this.descriptionBox);
+            this.ProfilePanel.Controls.Add(this.DeleteCategoryBtn);
+            this.ProfilePanel.Controls.Add(this.UpdatePasswordBtn);
+            this.ProfilePanel.Controls.Add(this.AddCategoryBtn);
+            this.ProfilePanel.Controls.Add(this.addCategoryBox);
+            this.ProfilePanel.Controls.Add(this.DeleteCategory);
+            this.ProfilePanel.Controls.Add(this.label28);
+            this.ProfilePanel.Controls.Add(this.label27);
+            this.ProfilePanel.Controls.Add(this.label26);
+            this.ProfilePanel.Controls.Add(this.updateProfileBtn);
+            this.ProfilePanel.Controls.Add(this.label25);
+            this.ProfilePanel.Controls.Add(this.UpdatePasswordConfirmBox);
+            this.ProfilePanel.Controls.Add(this.UpdatePasswordBox);
+            this.ProfilePanel.Controls.Add(this.UpdateEmailBox);
+            this.ProfilePanel.Controls.Add(this.label24);
+            this.ProfilePanel.Controls.Add(this.label23);
+            this.ProfilePanel.Controls.Add(this.label22);
+            this.ProfilePanel.Controls.Add(this.UpadteNameBox);
+            this.ProfilePanel.Controls.Add(this.label21);
             this.ProfilePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ProfilePanel.Location = new System.Drawing.Point(0, 0);
             this.ProfilePanel.Name = "ProfilePanel";
             this.ProfilePanel.Size = new System.Drawing.Size(1060, 671);
             this.ProfilePanel.TabIndex = 10;
+            // 
+            // deleteIncomeBtn
+            // 
+            this.deleteIncomeBtn.Location = new System.Drawing.Point(0, 0);
+            this.deleteIncomeBtn.Name = "deleteIncomeBtn";
+            this.deleteIncomeBtn.Size = new System.Drawing.Size(75, 23);
+            this.deleteIncomeBtn.TabIndex = 0;
+            // 
+            // editIncomeBtn
+            // 
+            this.editIncomeBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.editIncomeBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.editIncomeBtn.Location = new System.Drawing.Point(672, 468);
+            this.editIncomeBtn.Name = "editIncomeBtn";
+            this.editIncomeBtn.Size = new System.Drawing.Size(75, 23);
+            this.editIncomeBtn.TabIndex = 76;
+            this.editIncomeBtn.Text = "Edit";
+            this.editIncomeBtn.UseVisualStyleBackColor = false;
+            this.editIncomeBtn.Visible = false;
+            this.editIncomeBtn.Click += new System.EventHandler(this.editIncomeBtn_Click);
+            // 
+            // IncomeTextBox
+            // 
+            this.IncomeTextBox.Location = new System.Drawing.Point(624, 432);
+            this.IncomeTextBox.Name = "IncomeTextBox";
+            this.IncomeTextBox.Size = new System.Drawing.Size(288, 22);
+            this.IncomeTextBox.TabIndex = 75;
+            // 
+            // addIncomeBtn
+            // 
+            this.addIncomeBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.addIncomeBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.addIncomeBtn.Location = new System.Drawing.Point(768, 468);
+            this.addIncomeBtn.Name = "addIncomeBtn";
+            this.addIncomeBtn.Size = new System.Drawing.Size(75, 23);
+            this.addIncomeBtn.TabIndex = 72;
+            this.addIncomeBtn.Text = "Add";
+            this.addIncomeBtn.UseVisualStyleBackColor = false;
+            this.addIncomeBtn.Click += new System.EventHandler(this.addIncomeBtn_Click);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.Navy;
+            this.label31.Location = new System.Drawing.Point(684, 384);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(174, 32);
+            this.label31.TabIndex = 73;
+            this.label31.Text = "Add Income";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label30.Location = new System.Drawing.Point(624, 216);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(100, 22);
+            this.label30.TabIndex = 71;
+            this.label30.Text = "Description";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label29.Location = new System.Drawing.Point(624, 144);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(57, 22);
+            this.label29.TabIndex = 70;
+            this.label29.Text = "Name";
+            // 
+            // descriptionBox
+            // 
+            this.descriptionBox.Location = new System.Drawing.Point(624, 252);
+            this.descriptionBox.Name = "descriptionBox";
+            this.descriptionBox.Size = new System.Drawing.Size(288, 48);
+            this.descriptionBox.TabIndex = 69;
+            this.descriptionBox.Text = "";
+            // 
+            // DeleteCategoryBtn
+            // 
+            this.DeleteCategoryBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.DeleteCategoryBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.DeleteCategoryBtn.Location = new System.Drawing.Point(204, 612);
+            this.DeleteCategoryBtn.Name = "DeleteCategoryBtn";
+            this.DeleteCategoryBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteCategoryBtn.TabIndex = 67;
+            this.DeleteCategoryBtn.Text = "Delete";
+            this.DeleteCategoryBtn.UseVisualStyleBackColor = false;
+            this.DeleteCategoryBtn.Click += new System.EventHandler(this.DeleteCategoryBtn_Click);
+            // 
+            // UpdatePasswordBtn
+            // 
+            this.UpdatePasswordBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.UpdatePasswordBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.UpdatePasswordBtn.Location = new System.Drawing.Point(204, 492);
+            this.UpdatePasswordBtn.Name = "UpdatePasswordBtn";
+            this.UpdatePasswordBtn.Size = new System.Drawing.Size(75, 23);
+            this.UpdatePasswordBtn.TabIndex = 66;
+            this.UpdatePasswordBtn.Text = "Update";
+            this.UpdatePasswordBtn.UseVisualStyleBackColor = false;
+            this.UpdatePasswordBtn.Click += new System.EventHandler(this.UpdatePasswordBtn_Click);
+            // 
+            // AddCategoryBtn
+            // 
+            this.AddCategoryBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.AddCategoryBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AddCategoryBtn.Location = new System.Drawing.Point(720, 312);
+            this.AddCategoryBtn.Name = "AddCategoryBtn";
+            this.AddCategoryBtn.Size = new System.Drawing.Size(75, 23);
+            this.AddCategoryBtn.TabIndex = 65;
+            this.AddCategoryBtn.Text = "Add";
+            this.AddCategoryBtn.UseVisualStyleBackColor = false;
+            this.AddCategoryBtn.Click += new System.EventHandler(this.AddCategoryBtn_Click);
+            // 
+            // addCategoryBox
+            // 
+            this.addCategoryBox.Location = new System.Drawing.Point(624, 180);
+            this.addCategoryBox.Name = "addCategoryBox";
+            this.addCategoryBox.Size = new System.Drawing.Size(288, 22);
+            this.addCategoryBox.TabIndex = 64;
+            // 
+            // DeleteCategory
+            // 
+            this.DeleteCategory.FormattingEnabled = true;
+            this.DeleteCategory.Location = new System.Drawing.Point(108, 576);
+            this.DeleteCategory.Name = "DeleteCategory";
+            this.DeleteCategory.Size = new System.Drawing.Size(288, 24);
+            this.DeleteCategory.TabIndex = 62;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label28.Location = new System.Drawing.Point(108, 420);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(156, 22);
+            this.label28.TabIndex = 61;
+            this.label28.Text = "Confirm Password";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label27.Location = new System.Drawing.Point(108, 348);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(89, 22);
+            this.label27.TabIndex = 60;
+            this.label27.Text = "Password";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label26.Location = new System.Drawing.Point(108, 180);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(54, 22);
+            this.label26.TabIndex = 59;
+            this.label26.Text = "Email";
+            // 
+            // updateProfileBtn
+            // 
+            this.updateProfileBtn.BackColor = System.Drawing.Color.Turquoise;
+            this.updateProfileBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.updateProfileBtn.Location = new System.Drawing.Point(204, 252);
+            this.updateProfileBtn.Name = "updateProfileBtn";
+            this.updateProfileBtn.Size = new System.Drawing.Size(75, 23);
+            this.updateProfileBtn.TabIndex = 58;
+            this.updateProfileBtn.Text = "Update";
+            this.updateProfileBtn.UseVisualStyleBackColor = false;
+            this.updateProfileBtn.Click += new System.EventHandler(this.updateProfileBtn_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label25.Location = new System.Drawing.Point(108, 108);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(57, 22);
+            this.label25.TabIndex = 57;
+            this.label25.Text = "Name";
+            // 
+            // UpdatePasswordConfirmBox
+            // 
+            this.UpdatePasswordConfirmBox.Location = new System.Drawing.Point(108, 456);
+            this.UpdatePasswordConfirmBox.Name = "UpdatePasswordConfirmBox";
+            this.UpdatePasswordConfirmBox.Size = new System.Drawing.Size(288, 22);
+            this.UpdatePasswordConfirmBox.TabIndex = 56;
+            // 
+            // UpdatePasswordBox
+            // 
+            this.UpdatePasswordBox.Location = new System.Drawing.Point(108, 384);
+            this.UpdatePasswordBox.Name = "UpdatePasswordBox";
+            this.UpdatePasswordBox.Size = new System.Drawing.Size(288, 22);
+            this.UpdatePasswordBox.TabIndex = 55;
+            // 
+            // UpdateEmailBox
+            // 
+            this.UpdateEmailBox.Location = new System.Drawing.Point(108, 216);
+            this.UpdateEmailBox.Name = "UpdateEmailBox";
+            this.UpdateEmailBox.Size = new System.Drawing.Size(288, 22);
+            this.UpdateEmailBox.TabIndex = 54;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Navy;
+            this.label24.Location = new System.Drawing.Point(120, 528);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(259, 32);
+            this.label24.TabIndex = 53;
+            this.label24.Text = "Delete Categories";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Navy;
+            this.label23.Location = new System.Drawing.Point(660, 108);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(224, 32);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "Add Categories";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Navy;
+            this.label22.Location = new System.Drawing.Point(120, 300);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(260, 32);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "Change Password";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // UpadteNameBox
+            // 
+            this.UpadteNameBox.Location = new System.Drawing.Point(108, 144);
+            this.UpadteNameBox.Name = "UpadteNameBox";
+            this.UpadteNameBox.Size = new System.Drawing.Size(288, 22);
+            this.UpadteNameBox.TabIndex = 49;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Navy;
+            this.label21.Location = new System.Drawing.Point(144, 72);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(209, 32);
+            this.label21.TabIndex = 47;
+            this.label21.Text = "Update Profile";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UserPanel
             // 
@@ -462,7 +778,6 @@
             // ExpensePanel
             // 
             this.ExpensePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ExpensePanel.Controls.Add(this.DeleteBudget);
             this.ExpensePanel.Controls.Add(this.EditBudget);
             this.ExpensePanel.Controls.Add(this.BudgetBox);
             this.ExpensePanel.Controls.Add(this.label18);
@@ -493,6 +808,61 @@
             this.ExpensePanel.Name = "ExpensePanel";
             this.ExpensePanel.Size = new System.Drawing.Size(1060, 671);
             this.ExpensePanel.TabIndex = 10;
+            // 
+            // EditBudget
+            // 
+            this.EditBudget.BackColor = System.Drawing.Color.Turquoise;
+            this.EditBudget.Location = new System.Drawing.Point(732, 264);
+            this.EditBudget.Name = "EditBudget";
+            this.EditBudget.Size = new System.Drawing.Size(75, 23);
+            this.EditBudget.TabIndex = 46;
+            this.EditBudget.Text = "Edit";
+            this.EditBudget.UseVisualStyleBackColor = false;
+            this.EditBudget.Visible = false;
+            this.EditBudget.Click += new System.EventHandler(this.EditBudget_Click);
+            // 
+            // BudgetBox
+            // 
+            this.BudgetBox.Location = new System.Drawing.Point(684, 228);
+            this.BudgetBox.Name = "BudgetBox";
+            this.BudgetBox.Size = new System.Drawing.Size(288, 22);
+            this.BudgetBox.TabIndex = 45;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label18.Location = new System.Drawing.Point(684, 204);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(134, 22);
+            this.label18.TabIndex = 44;
+            this.label18.Text = "Monthly Budget";
+            this.label18.Click += new System.EventHandler(this.label18_Click);
+            // 
+            // AddBudget
+            // 
+            this.AddBudget.BackColor = System.Drawing.Color.Turquoise;
+            this.AddBudget.Location = new System.Drawing.Point(828, 264);
+            this.AddBudget.Name = "AddBudget";
+            this.AddBudget.Size = new System.Drawing.Size(75, 23);
+            this.AddBudget.TabIndex = 39;
+            this.AddBudget.Text = "Add";
+            this.AddBudget.UseVisualStyleBackColor = false;
+            this.AddBudget.Click += new System.EventHandler(this.Add_budget_click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Navy;
+            this.label20.Location = new System.Drawing.Point(708, 144);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(181, 32);
+            this.label20.TabIndex = 42;
+            this.label20.Text = "Add Budget ";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
             // label17
             // 
@@ -744,83 +1114,16 @@
             this.BudgetPanel.Size = new System.Drawing.Size(1060, 671);
             this.BudgetPanel.TabIndex = 11;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(684, 204);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(134, 22);
-            this.label18.TabIndex = 44;
-            this.label18.Text = "Monthly Budget";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
-            // 
-            // AddBudget
-            // 
-            this.AddBudget.BackColor = System.Drawing.Color.Turquoise;
-            this.AddBudget.Location = new System.Drawing.Point(840, 264);
-            this.AddBudget.Name = "AddBudget";
-            this.AddBudget.Size = new System.Drawing.Size(75, 23);
-            this.AddBudget.TabIndex = 39;
-            this.AddBudget.Text = "Add";
-            this.AddBudget.UseVisualStyleBackColor = false;
-            this.AddBudget.Click += new System.EventHandler(this.Add_budget_click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.Navy;
-            this.label20.Location = new System.Drawing.Point(708, 144);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(181, 32);
-            this.label20.TabIndex = 42;
-            this.label20.Text = "Add Budget ";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label20.Click += new System.EventHandler(this.label20_Click);
-            // 
-            // BudgetBox
-            // 
-            this.BudgetBox.Location = new System.Drawing.Point(684, 228);
-            this.BudgetBox.Name = "BudgetBox";
-            this.BudgetBox.Size = new System.Drawing.Size(288, 22);
-            this.BudgetBox.TabIndex = 45;
-            // 
-            // EditBudget
-            // 
-            this.EditBudget.BackColor = System.Drawing.Color.Turquoise;
-            this.EditBudget.Location = new System.Drawing.Point(732, 264);
-            this.EditBudget.Name = "EditBudget";
-            this.EditBudget.Size = new System.Drawing.Size(75, 23);
-            this.EditBudget.TabIndex = 46;
-            this.EditBudget.Text = "Edit";
-            this.EditBudget.UseVisualStyleBackColor = false;
-            this.EditBudget.Visible = false;
-            this.EditBudget.Click += new System.EventHandler(this.EditBudget_Click);
-            // 
-            // DeleteBudget
-            // 
-            this.DeleteBudget.BackColor = System.Drawing.Color.DeepPink;
-            this.DeleteBudget.Location = new System.Drawing.Point(792, 300);
-            this.DeleteBudget.Name = "DeleteBudget";
-            this.DeleteBudget.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBudget.TabIndex = 47;
-            this.DeleteBudget.Text = "Delete";
-            this.DeleteBudget.UseVisualStyleBackColor = false;
-            this.DeleteBudget.Visible = false;
-            this.DeleteBudget.Click += new System.EventHandler(this.DeleteBudget_Click);
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1062, 673);
+            this.ClientSize = new System.Drawing.Size(1057, 673);
             this.Controls.Add(this.UserPanel);
             this.Controls.Add(this.navPanel);
             this.Controls.Add(this.HomePanel);
-            this.Controls.Add(this.ExpensePanel);
             this.Controls.Add(this.ProfilePanel);
+            this.Controls.Add(this.ExpensePanel);
             this.Controls.Add(this.BudgetPanel);
             this.Name = "Dashboard";
             this.Text = "Dashboard";
@@ -833,6 +1136,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.expenseDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.expenseDBDataSet)).EndInit();
             this.navPanel.ResumeLayout(false);
+            this.ProfilePanel.ResumeLayout(false);
+            this.ProfilePanel.PerformLayout();
             this.UserPanel.ResumeLayout(false);
             this.UserPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -911,6 +1216,31 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox BudgetBox;
         private System.Windows.Forms.Button EditBudget;
-        private System.Windows.Forms.Button DeleteBudget;
+        private System.Windows.Forms.TextBox UpdatePasswordConfirmBox;
+        private System.Windows.Forms.TextBox UpdatePasswordBox;
+        private System.Windows.Forms.TextBox UpdateEmailBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox UpadteNameBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button AddCategoryBtn;
+        private System.Windows.Forms.TextBox addCategoryBox;
+        private System.Windows.Forms.ComboBox DeleteCategory;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button updateProfileBtn;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Button DeleteCategoryBtn;
+        private System.Windows.Forms.Button UpdatePasswordBtn;
+        private System.Windows.Forms.RichTextBox descriptionBox;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button deleteIncomeBtn;
+        private System.Windows.Forms.Button editIncomeBtn;
+        private System.Windows.Forms.TextBox IncomeTextBox;
+        private System.Windows.Forms.Button addIncomeBtn;
+        private System.Windows.Forms.Label label31;
     }
 }

@@ -50,7 +50,7 @@ namespace Expense_Tracker
                     string userName = reader["name"].ToString();
                     string userPassword = reader["password"].ToString();
                     string userId = reader["userId"].ToString();
-                    return (true, userEmail, userName, userPassword, userId);
+                    return (true, userName, userEmail, userPassword, userId);
                 }
             }
             catch (Exception ex)
@@ -145,38 +145,107 @@ namespace Expense_Tracker
         {
             if (id == Guid.Empty)
             {
-                return id.ToString();
-            }
-            else
-            {
                 SqlConnection DB = new DBConnection().openConnection();
-                SqlDataReader reader = null;
-
                 try
                 {
-                    string query = "select userId from [User] where email = @email";
+                    string query = "SELECT userId FROM [User] WHERE email = @Email";
                     SqlCommand cmd = new SqlCommand(query, DB);
-                    cmd.Parameters.AddWithValue("@email", email);
-                    reader = cmd.ExecuteReader();
+                    cmd.Parameters.AddWithValue("@Email", email);
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (reader != null)
+                    if (reader != null && reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            return reader["userId"].ToString();
-
-                        }
+                        id = Guid.Parse(reader["userId"].ToString());
+                        return id.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"User ID not found for the given email{email}.");
+                        return "";
                     }
                 }
                 catch (Exception ex)
                 {
-                    if (MessageBox.Show(ex.Message, "Database connection errro", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK) { Environment.Exit(0); }
+                    MessageBox.Show($"Error: {ex.Message}", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return "";
+                }
+                finally
+                {
+                    if (DB.State == ConnectionState.Open)
+                        DB.Close();
+                }
+            }
+            return id.ToString();
+        }
+
+        public bool UpdateProfile(string name = null, string email = null, string password = null)
+        {
+            string userId = getUserId();
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                MessageBox.Show("User ID is empty. Cannot update profile.");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("No fields provided to update.");
+                return false;
+            }
+
+            using (SqlConnection DB = new DBConnection().openConnection())
+            {
+                try
+                {
+                    string updateQuery = "UPDATE [User] SET ";
+                    SqlCommand cmd = new SqlCommand();
+                    if (!string.IsNullOrEmpty(name))
+                    {
+                        updateQuery += "name = @name, ";
+                        cmd.Parameters.AddWithValue("@name", name);
+                    }
+                    if (!string.IsNullOrEmpty(email))
+                    {
+                        updateQuery += "email = @email, ";
+                        cmd.Parameters.AddWithValue("@email", email);
+                    }
+                    if (!string.IsNullOrEmpty(password))
+                    {
+                        updateQuery += "password = @password, ";
+                        cmd.Parameters.AddWithValue("@password", password);
+                    }
+
+                    updateQuery = updateQuery.TrimEnd(',', ' ') + " WHERE userId = @userId";
+                    cmd.CommandText = updateQuery;
+                    cmd.Connection = DB;
+
+              
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    int rows = cmd.ExecuteNonQuery();
+                    if (rows > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No user found with the given ID.");
+                        return false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
 
-                return "";
-
+                finally
+                {
+                    if (DB.State == ConnectionState.Open)
+                        DB.Close();
+                }
             }
-            
         }
     }
 }

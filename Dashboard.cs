@@ -34,7 +34,14 @@ namespace Expense_Tracker
         {
             this.TableLoad();
             this.LoadPieChart();
-            reaminingBudget.Text = new Budget().GetRemainingBudgetFromExpenses(id).ToString() + " / " + new Budget().GetMostRecentBudget(id);
+            (string budget, string income) = new Budget().GetMostRecentBudget(id);
+            reaminingBudget.Text = new Budget().GetRemainingBudgetFromExpenses(id).ToString() + " / " + budget ;
+            IncomeTextBox.Text = income ;
+            TotalIncome.Text = income ;
+            if (income != null) {
+                deleteIncomeBtn.Visible = true;
+                editIncomeBtn.Visible = true ;
+            }
             TotalExpense.Text = new Expense().GetTotalExpense(id).ToString();
         }
 
@@ -176,7 +183,12 @@ namespace Expense_Tracker
 
             ProfileNav.BackColor = SystemColors.MenuHighlight;
             //ProfileNav.ForeColor = Color.Gray;
-            
+
+            (categories, categoryId) = LoadCategoryFilter();
+
+            DeleteCategory.Items.Clear();
+            DeleteCategory.Items.AddRange(categories);
+
             ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
     
         }
@@ -252,7 +264,7 @@ namespace Expense_Tracker
             filterStartDatePicker.ShowCheckBox = true;
             filterEndDatePicker.ShowCheckBox = true;
 
-            string budget = new Budget().GetMostRecentBudget(id);
+             (string budget, string income) = new Budget().GetMostRecentBudget(id);
 
             if (budget != null) { 
                 BudgetBox.Text = budget;
@@ -386,6 +398,8 @@ namespace Expense_Tracker
 
             if(isAdded)
             {
+                reaminingBudget.Text = new Budget().GetRemainingBudgetFromExpenses(id).ToString() + " / " + BudgetAmount;
+                BudgetBox.Text = BudgetAmount;
                 MessageBox.Show("Budget added successfully");
             }
         }
@@ -397,18 +411,214 @@ namespace Expense_Tracker
 
             if (isAdded)
             {
+                reaminingBudget.Text = new Budget().GetRemainingBudgetFromExpenses(id).ToString() + " / " + BudgetAmount;
+                BudgetBox.Text = BudgetAmount;
                 MessageBox.Show("Budget edited successfully");
             }
         }
 
-        private void DeleteBudget_Click(object sender, EventArgs e)
-        {
-            bool isDeleted = new Budget().DeleteBudget(id);
 
-            if (isDeleted)
+        private void updateProfileBtn_Click(object sender, EventArgs e)
+        {
+
+            string newName = UpadteNameBox.Text;
+            string newEmail = UpdateEmailBox.Text;
+
+            if (!string.IsNullOrEmpty(newName) && !string.IsNullOrEmpty(newEmail))
             {
-                MessageBox.Show("Budget Deleted successfully");
+                bool isUpdated = new User(email, password).UpdateProfile(newName,newEmail,null);
+                if (isUpdated)
+                {
+                    UserNameLabel.Text = newName;
+                    MessageBox.Show("Profile updated successfully");
+                }
             }
+            else if (!string.IsNullOrEmpty(newName))
+            {
+                bool isUpdated = new User(email, password).UpdateProfile(newName, null, null);
+                if (isUpdated)
+                {
+                    UserNameLabel.Text = newName;
+                    MessageBox.Show("Profile updated successfully");
+                }
+            }
+            else if (!string.IsNullOrEmpty(newName))
+            {
+                bool isUpdated = new User(email,password).UpdateProfile(null, newEmail, null);
+                if (isUpdated)
+                {
+                    MessageBox.Show("Profile updated successfully");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input in the fields");
+            }
+           
+
+        }
+
+        private void UpdatePasswordBtn_Click(object sender, EventArgs e)
+        {
+            string newPassword = UpdatePasswordBox.Text;
+            string ConfirmPassword = UpdatePasswordConfirmBox.Text;
+
+            if (!string.IsNullOrEmpty(newPassword) && !string.IsNullOrEmpty(ConfirmPassword))
+            {
+                if (newPassword != ConfirmPassword)
+                {
+                    MessageBox.Show("Passwords do not match");
+                }
+                else
+                {
+                    bool isUpdated = new User(email, password).UpdateProfile(null,null, newPassword);
+                    if (isUpdated)
+                    {
+                        MessageBox.Show("Password Changed successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password Not changed");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Input Both Feilds");
+            }
+
+        }
+
+        private void AddCategoryBtn_Click(object sender, EventArgs e)
+        {
+            string newCategory = addCategoryBox.Text;
+            string newDescription = descriptionBox.Text;
+
+            if (!string.IsNullOrEmpty(newCategory) && !string.IsNullOrEmpty(newCategory))
+            {
+                SqlConnection conn = new DBConnection().openConnection();
+                Guid catID = new Guid();
+
+                try
+                {
+                    string query = "INSERT INTO [Category] (categoryId,name,description ) VALUES (@categoryId,@name,@description)";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@categoryId", catID);
+                    cmd.Parameters.AddWithValue("@name", newCategory);
+                    cmd.Parameters.AddWithValue("@description", newDescription);
+                    int row = cmd.ExecuteNonQuery();
+
+                    if (row > 0)
+                    {
+                        (categories, categoryId) = LoadCategoryFilter();
+
+                        DeleteCategory.Items.Clear();
+                        DeleteCategory.Items.AddRange(categories);
+                        MessageBox.Show("Categories added");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    if (MessageBox.Show(ex.Message, "Database connection errro", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK) { Environment.Exit(0); }
+                }
+                finally { conn.Close(); }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Input In the Feilds");
+
+            }
+        }
+
+        private void DeleteCategoryBtn_Click(object sender, EventArgs e)
+        {
+
+            string category = DeleteCategory.Text;
+            string categoryID = categoryId[category];
+
+            if (!string.IsNullOrEmpty(categoryID))
+            {
+                SqlConnection conn = new DBConnection().openConnection();
+
+                try
+                {
+                    string query = @"
+                        DELETE FROM Category
+                        WHERE categoryId = @categoryId";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@categoryId", categoryID);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+                    if (rows > 0)
+                    {
+                        (categories, categoryId) = LoadCategoryFilter();
+
+                        DeleteCategory.Items.Clear();
+                        DeleteCategory.Items.AddRange(categories);
+                        MessageBox.Show("Category Deleted");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    if (MessageBox.Show(ex.Message, "Database connection errro", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK) { Environment.Exit(0); }
+                }
+                finally { conn.Close(); }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Invalid Category");
+
+            }
+
+
+        }
+
+        private void addIncomeBtn_Click(object sender, EventArgs e)
+        {
+            string Income = IncomeTextBox.Text;
+
+            if (!string.IsNullOrEmpty(Income))
+            {
+                bool isAdded = new Budget().AddIncome(id, Income);
+                if (isAdded)
+                {
+                    IncomeTextBox.Text = Income;
+                    TotalIncome.Text = Income;
+                    MessageBox.Show("Income added successfully");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Input in the field");
+            }
+        }
+
+        private void editIncomeBtn_Click(object sender, EventArgs e)
+        {
+            string Income = IncomeTextBox.Text;
+            if (!string.IsNullOrEmpty(Income))
+            {
+                bool isAdded = new Budget().AddIncome(id, Income);
+                if (isAdded)
+                {
+                    IncomeTextBox.Text = Income;
+                    TotalIncome.Text = Income;
+                    MessageBox.Show("Income edited successfully");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Input in the field");
+            }
+
         }
     }
     }

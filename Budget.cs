@@ -66,7 +66,7 @@ namespace Expense_Tracker
         }
 
 
-        public string GetMostRecentBudget(string userId)
+        public (string,string) GetMostRecentBudget(string userId)
         {
             DBConnection DB = new DBConnection();
             SqlConnection conn = DB.openConnection();
@@ -75,7 +75,7 @@ namespace Expense_Tracker
             try
             {
                 string query = @"
-                SELECT TOP 1 budgetAmount
+                SELECT TOP 1 budgetAmount,income
                 FROM Budget
                 WHERE userId = @userId
                 ORDER BY startDate DESC";
@@ -86,7 +86,7 @@ namespace Expense_Tracker
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    recentBudget = reader["budgetAmount"].ToString();
+                    return (reader["budgetAmount"].ToString(), reader["income"].ToString() );
                 }
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace Expense_Tracker
                 conn.Close();
             }
 
-            return recentBudget;
+            return (null,null);
         }
 
 
@@ -170,8 +170,7 @@ namespace Expense_Tracker
         }
 
 
-
-        public bool DeleteBudget(string userId)
+        public bool AddIncome(string id, string Income)
         {
             DBConnection DB = new DBConnection();
             SqlConnection conn = DB.openConnection();
@@ -179,16 +178,18 @@ namespace Expense_Tracker
             try
             {
                 string query = @"
-                        DELETE FROM Budget
-                        WHERE budgetId = (
-                            SELECT TOP 1 budgetId
-                            FROM Budget
-                            WHERE userId = @userId
-                            ORDER BY startDate DESC
-                        )";
+                                UPDATE Budget 
+                                SET income = @income 
+                                WHERE budgetId = (
+                                    SELECT TOP 1 budgetId 
+                                    FROM Budget 
+                                    WHERE userId = @userId 
+                                    ORDER BY startDate DESC
+                                )";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@userId", userId); 
+                cmd.Parameters.AddWithValue("@income", Income);
+                cmd.Parameters.AddWithValue("@userId", id);
 
                 int rows = cmd.ExecuteNonQuery();
 
@@ -205,6 +206,7 @@ namespace Expense_Tracker
             }
         }
 
+        
 
 
 

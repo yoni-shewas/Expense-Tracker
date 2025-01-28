@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -50,11 +50,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.TotalExpense = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.reaminingBudget = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.TotalIncome = new System.Windows.Forms.TextBox();
             this.navPanel = new System.Windows.Forms.Panel();
             this.ExpenseNav = new System.Windows.Forms.Button();
             this.HomeNav = new System.Windows.Forms.Button();
@@ -121,6 +118,9 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BudgetPanel = new System.Windows.Forms.Panel();
+            this.TotalIncome = new System.Windows.Forms.Label();
+            this.TotalExpense = new System.Windows.Forms.Label();
+            this.reaminingBudget = new System.Windows.Forms.Label();
             this.HomePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.summaryPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -140,6 +140,9 @@
             // HomePanel
             // 
             this.HomePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.HomePanel.Controls.Add(this.reaminingBudget);
+            this.HomePanel.Controls.Add(this.TotalExpense);
+            this.HomePanel.Controls.Add(this.TotalIncome);
             this.HomePanel.Controls.Add(this.UserPanel);
             this.HomePanel.Controls.Add(this.linkLabel2);
             this.HomePanel.Controls.Add(this.linkLabel1);
@@ -151,11 +154,8 @@
             this.HomePanel.Controls.Add(this.label5);
             this.HomePanel.Controls.Add(this.label4);
             this.HomePanel.Controls.Add(this.label3);
-            this.HomePanel.Controls.Add(this.TotalExpense);
             this.HomePanel.Controls.Add(this.label2);
-            this.HomePanel.Controls.Add(this.reaminingBudget);
             this.HomePanel.Controls.Add(this.label1);
-            this.HomePanel.Controls.Add(this.TotalIncome);
             this.HomePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HomePanel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.HomePanel.Location = new System.Drawing.Point(0, 0);
@@ -209,18 +209,18 @@
             this.summaryPie.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea7.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend1);
             this.summaryPie.Location = new System.Drawing.Point(449, 107);
             this.summaryPie.Margin = new System.Windows.Forms.Padding(2);
             this.summaryPie.Name = "summaryPie";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.summaryPie.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.summaryPie.Series.Add(series1);
             this.summaryPie.Size = new System.Drawing.Size(297, 205);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
@@ -362,16 +362,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 18);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Total Expense:";
-            // 
-            // TotalExpense
-            // 
-            this.TotalExpense.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TotalExpense.Location = new System.Drawing.Point(206, 166);
-            this.TotalExpense.Margin = new System.Windows.Forms.Padding(2);
-            this.TotalExpense.Name = "TotalExpense";
-            this.TotalExpense.Size = new System.Drawing.Size(118, 20);
-            this.TotalExpense.TabIndex = 4;
+            this.label3.Text = "Total Expense ";
             // 
             // label2
             // 
@@ -382,18 +373,9 @@
             this.label2.Location = new System.Drawing.Point(62, 195);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(154, 18);
+            this.label2.Size = new System.Drawing.Size(149, 18);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Reamining Budget: ";
-            // 
-            // reaminingBudget
-            // 
-            this.reaminingBudget.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.reaminingBudget.Location = new System.Drawing.Point(206, 195);
-            this.reaminingBudget.Margin = new System.Windows.Forms.Padding(2);
-            this.reaminingBudget.Name = "reaminingBudget";
-            this.reaminingBudget.Size = new System.Drawing.Size(118, 20);
-            this.reaminingBudget.TabIndex = 2;
+            this.label2.Text = "Reamining Budget ";
             // 
             // label1
             // 
@@ -404,18 +386,9 @@
             this.label1.Location = new System.Drawing.Point(98, 136);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 18);
+            this.label1.Size = new System.Drawing.Size(111, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Total Income: ";
-            // 
-            // TotalIncome
-            // 
-            this.TotalIncome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TotalIncome.Location = new System.Drawing.Point(206, 136);
-            this.TotalIncome.Margin = new System.Windows.Forms.Padding(2);
-            this.TotalIncome.Name = "TotalIncome";
-            this.TotalIncome.Size = new System.Drawing.Size(118, 20);
-            this.TotalIncome.TabIndex = 0;
+            this.label1.Text = "Total Income ";
             // 
             // navPanel
             // 
@@ -1254,6 +1227,45 @@
             this.BudgetPanel.Size = new System.Drawing.Size(795, 545);
             this.BudgetPanel.TabIndex = 11;
             // 
+            // TotalIncome
+            // 
+            this.TotalIncome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TotalIncome.AutoSize = true;
+            this.TotalIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalIncome.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TotalIncome.Location = new System.Drawing.Point(204, 136);
+            this.TotalIncome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TotalIncome.Name = "TotalIncome";
+            this.TotalIncome.Size = new System.Drawing.Size(18, 18);
+            this.TotalIncome.TabIndex = 18;
+            this.TotalIncome.Text = ": ";
+            // 
+            // TotalExpense
+            // 
+            this.TotalExpense.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TotalExpense.AutoSize = true;
+            this.TotalExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalExpense.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TotalExpense.Location = new System.Drawing.Point(204, 166);
+            this.TotalExpense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.TotalExpense.Name = "TotalExpense";
+            this.TotalExpense.Size = new System.Drawing.Size(18, 18);
+            this.TotalExpense.TabIndex = 19;
+            this.TotalExpense.Text = ": ";
+            // 
+            // reaminingBudget
+            // 
+            this.reaminingBudget.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.reaminingBudget.AutoSize = true;
+            this.reaminingBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reaminingBudget.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.reaminingBudget.Location = new System.Drawing.Point(204, 196);
+            this.reaminingBudget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.reaminingBudget.Name = "reaminingBudget";
+            this.reaminingBudget.Size = new System.Drawing.Size(18, 18);
+            this.reaminingBudget.TabIndex = 20;
+            this.reaminingBudget.Text = ": ";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1304,11 +1316,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TotalExpense;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox reaminingBudget;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TotalIncome;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
@@ -1382,5 +1391,8 @@
         private System.Windows.Forms.Button addIncomeBtn;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Panel BudgetPanel;
+        private System.Windows.Forms.Label TotalExpense;
+        private System.Windows.Forms.Label TotalIncome;
+        private System.Windows.Forms.Label reaminingBudget;
     }
 }

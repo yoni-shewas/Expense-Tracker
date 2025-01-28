@@ -113,7 +113,7 @@ namespace Expense_Tracker
                 this.Hide();
                 Dashboard dashboard = new Dashboard(userName, userEmail, userPassword, userId);
                 dashboard.Show();
-                MessageBox.Show("Login Successful");
+                MessageBox.Show("Login Successful ");
             }
             else
             {

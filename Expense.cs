@@ -73,23 +73,31 @@ namespace Expense_Tracker
             throw new NotImplementedException();
         }
 
-        public DataTable GetExpenseData(string id, string categoryFilter = null, DateTime? startDateFilter = null, DateTime? endDateFilter = null, decimal? minAmountFilter = null, decimal? maxAmountFilter = null)
+        public DataTable GetExpenseData(
+        string id,
+        string categoryFilter = null,
+        DateTime? startDateFilter = null,
+        DateTime? endDateFilter = null,
+        decimal? minAmountFilter = null,
+        decimal? maxAmountFilter = null)
         {
-            string query = @"
-                            SELECT
-                                u.name AS userName,
-                                c.name AS categoryName,
-                                e.amount AS Amount,
-                                e.date AS Date
-                            FROM 
-                                dbo.Expense e
-                            JOIN 
-                                dbo.[User] u ON e.userId = @userId
-                            JOIN 
-                                dbo.Category c ON e.categoryId = c.categoryId
-                            WHERE 
-                                e.userId = @userId";
+      
+                string query = @"
+            SELECT
+                u.name AS userName,
+                c.name AS categoryName,
+                e.amount AS Amount,
+                e.date AS Date
+            FROM 
+                dbo.Expense e
+            JOIN 
+                dbo.[User] u ON e.userId = u.userId
+            JOIN 
+                dbo.Category c ON e.categoryId = c.categoryId
+            WHERE 
+                e.userId = @userId";
 
+      
             if (!string.IsNullOrEmpty(categoryFilter))
             {
                 query += " AND c.name = @categoryFilter";
@@ -121,15 +129,22 @@ namespace Expense_Tracker
                 query += " AND e.amount <= @maxAmountFilter";
             }
 
-            query += " ORDER BY e.date DESC;";  
+            query += " ORDER BY e.date DESC;";
 
-            SqlConnection DB = new DBConnection().openConnection();
+   
+            SqlConnection DB = null;
+            SqlCommand command = null;
 
             try
             {
-                SqlCommand command = new SqlCommand(query, DB);
-                command.Parameters.AddWithValue("@userId", id);
+                DB = new DBConnection().openConnection();
+                command = new SqlCommand(query, DB);
 
+
+                Guid userId = Guid.Parse(id);
+                command.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = userId;
+
+               
                 if (!string.IsNullOrEmpty(categoryFilter))
                 {
                     command.Parameters.AddWithValue("@categoryFilter", categoryFilter);
@@ -160,7 +175,6 @@ namespace Expense_Tracker
                 int rowsAffected = dataAdapter.Fill(dataTable);
 
                 MessageBox.Show($"Rows returned: {rowsAffected}");
-
                 return dataTable;
             }
             catch (Exception ex)
@@ -169,12 +183,20 @@ namespace Expense_Tracker
             }
             finally
             {
-                if (DB.State == ConnectionState.Open)
+     
+                if (DB != null && DB.State == ConnectionState.Open)
+                {
                     DB.Close();
+                }
+                if (command != null)
+                {
+                    command.Dispose();
+                }
             }
 
             return null;
         }
+
 
         public double GetTotalExpense(string id)
         {

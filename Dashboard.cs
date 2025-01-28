@@ -26,6 +26,7 @@ namespace Expense_Tracker
             password = userPassword;
             name = userName;
             id = userId;
+            //MessageBox.Show(id);
 
             UserNameLabel.Text = userName;
         }
@@ -39,7 +40,6 @@ namespace Expense_Tracker
             IncomeTextBox.Text = income ;
             TotalIncome.Text = income ;
             if (income != null) {
-                deleteIncomeBtn.Visible = true;
                 editIncomeBtn.Visible = true ;
             }
             TotalExpense.Text = new Expense().GetTotalExpense(id).ToString();
@@ -48,34 +48,45 @@ namespace Expense_Tracker
         private void TableLoad()
         {
             string query = @"
-                    SELECT TOP 10
-                        u.name AS userName,
-                        c.name AS categoryName,
-                        e.amount AS Amount,
-                        e.date AS Date
-                    FROM 
-                        dbo.Expense e
-                    JOIN 
-                        dbo.[User] u ON e.userId = @userId
-                    JOIN 
-                        dbo.Category c ON e.categoryId = c.categoryId
-                    WHERE 
-                        e.userId = @userId
-                        AND u.userId IS NOT NULL 
-                        AND c.categoryId IS NOT NULL
-                    ORDER BY 
-                        e.date DESC;";
+                            SELECT TOP 10
+                                u.name AS userName,
+                                c.name AS categoryName,
+                                e.amount AS Amount,
+                                e.date AS Date
+                            FROM 
+                                dbo.Expense e
+                            JOIN 
+                                dbo.[User] u ON e.userId = u.userId
+                            JOIN 
+                                dbo.Category c ON e.categoryId = c.categoryId
+                            WHERE 
+                                e.userId = @userId
+                                AND u.userId IS NOT NULL 
+                                AND c.categoryId IS NOT NULL
+                            ORDER BY 
+                                e.date DESC;";
 
             SqlConnection DB = new DBConnection().openConnection();
 
             try
             {
+
+
                 SqlCommand command = new SqlCommand(query, DB);
-                command.Parameters.AddWithValue("@userId", id);
+                command.Parameters.Add("@userId", SqlDbType.UniqueIdentifier).Value = Guid.Parse(id);
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    dataGridView1.DataSource = dataTable;
+                }
+                else
+                {
+                    MessageBox.Show("No data returned.");
+                }
 
                 dataGridView1.DataSource = dataTable;
 
@@ -186,6 +197,9 @@ namespace Expense_Tracker
 
             (categories, categoryId) = LoadCategoryFilter();
 
+            UpdateEmailBox.Text = email;
+            UpadteNameBox.Text = name;
+
             DeleteCategory.Items.Clear();
             DeleteCategory.Items.AddRange(categories);
 
@@ -207,21 +221,6 @@ namespace Expense_Tracker
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-        }
-
-        private void BudgetNav_Click(object sender, EventArgs e)
-        {
-            ProfilePanel.Hide();
-            HomePanel.Hide();
-            BudgetPanel.Show();
-            ExpensePanel.Hide();
-
-          
-            ProfileNav.BackColor = SystemColors.GradientInactiveCaption;
-          
-            ExpenseNav.BackColor = SystemColors.GradientInactiveCaption;
-            HomeNav.BackColor = SystemColors.GradientInactiveCaption;
-
         }
 
         private void ExpenseNav_Click(object sender, EventArgs e)
@@ -362,6 +361,7 @@ namespace Expense_Tracker
             else
             {
                 Expense addExpense = new Expense();
+                //MessageBox.Show(id);
                 addExpense.add_expense(id,expense, categoryID);
             }
         }
@@ -618,6 +618,11 @@ namespace Expense_Tracker
             {
                 MessageBox.Show("Input in the field");
             }
+
+        }
+
+        private void HomePanel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

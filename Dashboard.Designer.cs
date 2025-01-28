@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -60,7 +60,6 @@
             this.HomeNav = new System.Windows.Forms.Button();
             this.ProfileNav = new System.Windows.Forms.Button();
             this.ProfilePanel = new System.Windows.Forms.Panel();
-            this.deleteIncomeBtn = new System.Windows.Forms.Button();
             this.editIncomeBtn = new System.Windows.Forms.Button();
             this.IncomeTextBox = new System.Windows.Forms.TextBox();
             this.addIncomeBtn = new System.Windows.Forms.Button();
@@ -161,6 +160,7 @@
             this.HomePanel.Name = "HomePanel";
             this.HomePanel.Size = new System.Drawing.Size(1060, 672);
             this.HomePanel.TabIndex = 2;
+            this.HomePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.HomePanel_Paint);
             // 
             // linkLabel2
             // 
@@ -199,17 +199,17 @@
             // 
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea1.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend3);
             this.summaryPie.Location = new System.Drawing.Point(600, 132);
             this.summaryPie.Name = "summaryPie";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.summaryPie.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.summaryPie.Series.Add(series3);
             this.summaryPie.Size = new System.Drawing.Size(396, 252);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
@@ -431,7 +431,6 @@
             // ProfilePanel
             // 
             this.ProfilePanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ProfilePanel.Controls.Add(this.deleteIncomeBtn);
             this.ProfilePanel.Controls.Add(this.editIncomeBtn);
             this.ProfilePanel.Controls.Add(this.IncomeTextBox);
             this.ProfilePanel.Controls.Add(this.addIncomeBtn);
@@ -462,13 +461,6 @@
             this.ProfilePanel.Name = "ProfilePanel";
             this.ProfilePanel.Size = new System.Drawing.Size(1060, 671);
             this.ProfilePanel.TabIndex = 10;
-            // 
-            // deleteIncomeBtn
-            // 
-            this.deleteIncomeBtn.Location = new System.Drawing.Point(0, 0);
-            this.deleteIncomeBtn.Name = "deleteIncomeBtn";
-            this.deleteIncomeBtn.Size = new System.Drawing.Size(75, 23);
-            this.deleteIncomeBtn.TabIndex = 0;
             // 
             // editIncomeBtn
             // 
@@ -1237,7 +1229,6 @@
         private System.Windows.Forms.RichTextBox descriptionBox;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Button deleteIncomeBtn;
         private System.Windows.Forms.Button editIncomeBtn;
         private System.Windows.Forms.TextBox IncomeTextBox;
         private System.Windows.Forms.Button addIncomeBtn;

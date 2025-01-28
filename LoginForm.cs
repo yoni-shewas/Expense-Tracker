@@ -19,6 +19,10 @@ namespace Expense_Tracker
         {
             InitializeComponent();
         }
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit(); // Completely close the application
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

@@ -17,7 +17,7 @@ namespace Expense_Tracker
         {
             try
             {
-                string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\yonat\\source\\repos\\Expense Tracker\\ExpenseDB.mdf\";Integrated Security=True;Connect Timeout=30";
+                string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\paulo\\Videos\\rad final asg\\Expense-Tracker\\ExpenseDB.mdf\";Integrated Security=True;Connect Timeout=30";
                 SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
                 return conn;

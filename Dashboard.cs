@@ -31,6 +31,11 @@ namespace Expense_Tracker
             UserNameLabel.Text = userName;
         }
 
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit(); // Completely close the application
+        }
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
             this.TableLoad();

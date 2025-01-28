@@ -269,7 +269,7 @@ namespace Expense_Tracker
             if (budget != null) { 
                 BudgetBox.Text = budget;
                 EditBudget.Visible = true;
-                DeleteBudget.Visible = true;
+               ;
             }
 
         }

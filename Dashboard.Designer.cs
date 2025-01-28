@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.HomePanel = new System.Windows.Forms.Panel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -199,17 +199,17 @@
             // 
             this.summaryPie.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.summaryPie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            chartArea6.Name = "ChartArea1";
-            this.summaryPie.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.summaryPie.Legends.Add(legend6);
+            chartArea1.Name = "ChartArea1";
+            this.summaryPie.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.summaryPie.Legends.Add(legend1);
             this.summaryPie.Location = new System.Drawing.Point(600, 132);
             this.summaryPie.Name = "summaryPie";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.summaryPie.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.summaryPie.Series.Add(series1);
             this.summaryPie.Size = new System.Drawing.Size(396, 252);
             this.summaryPie.TabIndex = 15;
             this.summaryPie.Text = "chart1";
